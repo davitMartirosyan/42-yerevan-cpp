@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:51:23 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/04/29 06:13:30 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/04/30 03:49:25 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,6 @@
 void	PhoneBook::Search()
 {
 	PhoneBook::ShowAllContacts();
-}
-
-void	PhoneBook::Add(std::string phone, std::string fname, std::string lname, std::string nickname, std::string darkestSecret)
-{
-	if (this->index <= 7)
-	{
-		this->contacts[index].fname = fname;
-		this->contacts[index].lname = lname;
-		this->contacts[index].nickname = nickname;
-		this->contacts[index].darkestsecret = darkestSecret;
-		this->index++;
-	}
-	if (this->index == 7)
-		this->index = 0;
 }
 
 void	PhoneBook::Exit(void)
@@ -63,6 +49,8 @@ void	PhoneBook::UserInputs()
 		Input();
 	}
 	this->index++;
+	if (this->index == 7)
+		this->index = 0;
 }
 
 void	PhoneBook::Input(void)
@@ -127,12 +115,13 @@ bool	PhoneBook::IsNumber(std::string str)
 
 void	PhoneBook::ShowAllContacts()
 {
-	if (this->index == 0)
+	int	usercounttable = 0;
+	if (this->contacts[0].fname.empty())
 		std::cout << "No Contacts Yet!" << std::endl;
 	else
 	{
 		std::cout << "_____________________________________\n";
-		for(int index = 0; index < this->index; index++)
+		for(int index = 0; index <= this->index; index++)
 		{
 			std::cout << std::right << std::setw(2) << index;
 			std::cout << "|";
@@ -140,8 +129,13 @@ void	PhoneBook::ShowAllContacts()
 			std::cout << std::setw(10) << this->resize(this->contacts[index].lname) << "|";
 			std::cout << std::setw(10) << this->resize(this->contacts[index].nickname) << "|";
 			std::cout << "\n";
-		}	
+		}
 		std::cout << "-------------------------------------\n";
 	}
 }
 
+void	PhoneBook::Close(std::string cls)
+{
+	std::cout << cls << std::endl;
+	exit(0);
+}

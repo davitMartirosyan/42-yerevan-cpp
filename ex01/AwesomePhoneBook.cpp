@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:57:58 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/04/29 05:59:20 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/04/30 01:08:34 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,13 @@ int main(void)
 		std::cout << "Digitain$: ";
 		std::getline(std::cin, phonebook.command);
 		if (std::cin.eof())
-		{
-			std::cout << "Bye...\n";
-			break;
-		}
+			phonebook.Close("Bye...");
 		else if (phonebook.command == "ADD")
 			phonebook.UserInputs();
 		else if (phonebook.command == "SEARCH")
 			phonebook.Search();
 		else if (phonebook.command == "EXIT")
-			std::cout << "Exit from program\n";
+			phonebook.Close("Good Bye!");
 		else if (phonebook.command == "clear")
 			system("clear");
 		else
