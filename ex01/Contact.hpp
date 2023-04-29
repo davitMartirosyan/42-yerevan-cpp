@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:58:00 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/04/28 13:47:25 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/04/29 04:10:03 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 class Contact
 {
 	public:
-		long phone;
+		std::string phone;
 		std::string fname;
 		std::string lname;
 		std::string nickname;

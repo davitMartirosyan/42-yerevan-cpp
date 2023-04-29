@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:57:58 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/04/28 16:21:10 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/04/29 05:59:20 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,27 @@
 int main(void)
 {
 	PhoneBook phonebook;
-
 	std::cout << "*-------------------------------*\n";
 	std::cout << "* Welcome To Awesome Phone Book *\n";
 	std::cout << "*-------------------------------*\n";
-	while (!std::cin.eof())
+	while (1)
 	{
-		std::cout << "bash$: ";
-		std::cin >> phonebook.command;
-		// std::cin >> phonebook.command;
+		std::cout << "Digitain$: ";
+		std::getline(std::cin, phonebook.command);
 		if (std::cin.eof())
-			std::cout << "Bye...\n";
-		else if (phonebook.command == "ADD")
 		{
-			std::cout << "Add user\n";
-			phonebook.UserInputs(phonebook.UserInput);
-			std::cout << "Hasa\n";
+			std::cout << "Bye...\n";
+			break;
 		}
+		else if (phonebook.command == "ADD")
+			phonebook.UserInputs();
 		else if (phonebook.command == "SEARCH")
-			std::cout << "Search User\n";
+			phonebook.Search();
 		else if (phonebook.command == "EXIT")
 			std::cout << "Exit from program\n";
 		else if (phonebook.command == "clear")
 			system("clear");
+		else
+			std::cout << "Command not found" << std::endl;
 	}
 }
