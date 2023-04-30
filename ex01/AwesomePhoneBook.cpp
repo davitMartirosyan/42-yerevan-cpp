@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:57:58 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/04/30 05:35:50 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/04/30 06:13:55 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int main(void)
 		std::getline(std::cin, phonebook.command);
 		if (std::cin.eof())
 			phonebook.Close("Bye...");
+		else if (phonebook.command.empty())
+			continue;
 		else if (phonebook.command == "ADD")
 			phonebook.UserInputs();
 		else if (phonebook.command == "SEARCH")
