@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:51:23 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/04/30 03:49:25 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/04/30 06:11:29 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,33 @@
 
 void	PhoneBook::Search()
 {
-	PhoneBook::ShowAllContacts();
-}
-
-void	PhoneBook::Exit(void)
-{
-	
+	if (this->contacts[0].fname.empty())
+		std::cout << "No Contacts Yet!" << std::endl;
+	else if (this->nospace == 8)
+		PhoneBook::ShowAllContacts(this->nospace);
+	else
+		PhoneBook::ShowAllContacts(this->index);
+	while(1)
+	{
+		std::cout << "Id: ";
+		std::getline(std::cin, this->id);
+		if (!PhoneBook::IsNumber(this->id))
+		{
+			std::cout << "Enter Correct Id" << std::endl;
+			continue;
+		}
+		else
+			break;
+	}
+	 int idx = std::atoi(this->id.c_str());
+	if (!this->contacts[idx].fname.empty())
+	{
+		std::cout << "Phone Number: " << this->contacts[idx].phone << std::endl;
+		std::cout << "First Name: " << this->contacts[idx].fname << std::endl;
+		std::cout << "Last Name: " << this->contacts[idx].lname << std::endl;
+		std::cout << "Nick Name: " << this->contacts[idx].nickname << std::endl;
+		std::cout << "Darkest Secret: " << this->contacts[idx].darkestsecret << std::endl;
+	}
 }
 
 std::string PhoneBook::resize(std::string str)
@@ -32,6 +53,11 @@ std::string PhoneBook::resize(std::string str)
 void	PhoneBook::UserInputs()
 {
 	this->checker = 0;
+	if (this->index == 8)
+	{
+		this->index = 0;
+		this->nospace = 8;
+	}
 	while (this->checker <= 4)
 	{
 		if (std::cin.eof())
@@ -49,8 +75,6 @@ void	PhoneBook::UserInputs()
 		Input();
 	}
 	this->index++;
-	if (this->index == 7)
-		this->index = 0;
 }
 
 void	PhoneBook::Input(void)
@@ -100,7 +124,7 @@ void	PhoneBook::Input(void)
 bool	PhoneBook::IsNumber(std::string str)
 {
 	bool isNumber = true;
-	for(int i = 0; i < str.length(); i++)
+	for(int i = 0; i < (int)str.length(); i++)
 	{
 		if (!std::isdigit(str[i]))
 		{
@@ -113,29 +137,24 @@ bool	PhoneBook::IsNumber(std::string str)
 	return (isNumber);
 }
 
-void	PhoneBook::ShowAllContacts()
+void	PhoneBook::ShowAllContacts(int space)
 {
-	int	usercounttable = 0;
-	if (this->contacts[0].fname.empty())
-		std::cout << "No Contacts Yet!" << std::endl;
-	else
+	std::cout << "*************************************\n";
+	for(int index = 0; index < space; index++)
 	{
-		std::cout << "_____________________________________\n";
-		for(int index = 0; index <= this->index; index++)
-		{
-			std::cout << std::right << std::setw(2) << index;
-			std::cout << "|";
-			std::cout << std::right << std::setw(10) << this->resize(this->contacts[index].fname) << "|";
-			std::cout << std::setw(10) << this->resize(this->contacts[index].lname) << "|";
-			std::cout << std::setw(10) << this->resize(this->contacts[index].nickname) << "|";
-			std::cout << "\n";
-		}
-		std::cout << "-------------------------------------\n";
+		std::cout << "|";
+		std::cout << std::right << std::setw(2) << index+1;
+		std::cout << "|";
+		std::cout << std::right << std::setw(10) << this->resize(this->contacts[index].fname) << "|";
+		std::cout << std::setw(10) << this->resize(this->contacts[index].lname) << "|";
+		std::cout << std::setw(10) << this->resize(this->contacts[index].nickname) << "|";
+		std::cout << "\n";
 	}
+	std::cout << "*************************************\n";
 }
 
 void	PhoneBook::Close(std::string cls)
 {
 	std::cout << cls << std::endl;
-	exit(0);
+	exit(1);
 }

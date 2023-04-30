@@ -1,7 +1,7 @@
 NAME = awsomephonebook
 CC = c++
 HEADERS = $(wildcard *.hpp)
-FLAGS = -std=c++98 #-Wall -Wextra -Werror
+FLAGS = -std=c++98 -Wall -Wextra -Werror
 SRC = $(wildcard *.cpp)
 OBJ = $(SRC:.cpp=.o)
 
