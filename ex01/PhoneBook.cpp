@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:51:23 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/04/30 06:11:29 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/01 09:25:24 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 void	PhoneBook::Search()
 {
+	int idx;
 	if (this->contacts[0].fname.empty())
+	{
 		std::cout << "No Contacts Yet!" << std::endl;
+		return;
+	}
 	else if (this->nospace == 8)
 		PhoneBook::ShowAllContacts(this->nospace);
 	else
@@ -32,8 +36,13 @@ void	PhoneBook::Search()
 		else
 			break;
 	}
-	 int idx = std::atoi(this->id.c_str());
-	if (!this->contacts[idx].fname.empty())
+	idx = std::atoi(this->id.c_str());
+	if (this->contacts[idx].fname.empty())
+	{
+		std::cout << "No Member with id: " << idx << std::endl;
+		return ;
+	}
+	else
 	{
 		std::cout << "Phone Number: " << this->contacts[idx].phone << std::endl;
 		std::cout << "First Name: " << this->contacts[idx].fname << std::endl;
@@ -143,7 +152,7 @@ void	PhoneBook::ShowAllContacts(int space)
 	for(int index = 0; index < space; index++)
 	{
 		std::cout << "|";
-		std::cout << std::right << std::setw(2) << index+1;
+		std::cout << std::right << std::setw(2) << index;
 		std::cout << "|";
 		std::cout << std::right << std::setw(10) << this->resize(this->contacts[index].fname) << "|";
 		std::cout << std::setw(10) << this->resize(this->contacts[index].lname) << "|";
