@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/02 04:36:14 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/03 02:18:55 by dmartiro         ###   ########.fr       */
+/*   Created: 2023/05/03 01:53:09 by dmartiro          #+#    #+#             */
+/*   Updated: 2023/05/03 02:13:00 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-void Zombie::announce( void )
+int main( void )
 {
-	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl; 
+	Zombie *zombie = newZombie("Foo");
+	randomChump("Zombie1");
 }
-
-Zombie::Zombie(std::string name)
-{
-	this->name = name;
-	announce();
-}
-
-Zombie::~Zombie()
-{
-	std::cout << "[" << name << "]" << std::endl;
-}
-
