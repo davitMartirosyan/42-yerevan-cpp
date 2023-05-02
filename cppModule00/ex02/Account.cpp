@@ -6,13 +6,12 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 12:13:59 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/01 16:00:44 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/02 04:06:29 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
-#include <iostream>
-#include <ctime>
+
 
 int	Account::_nbAccounts = 0;
 int	Account::_totalAmount = 0;
@@ -101,8 +100,17 @@ void Account::displayAccountsInfos( void )
 
 void Account::_displayTimestamp( void )
 {
-	std::cout << "[" << std::time(nullptr) << "]";
-	std::cout << " ";
+	std::time_t time = std::time(nullptr);
+
+	std::cout << "[";
+	std::cout << 1900 + std::localtime(&time)->tm_year;
+	std::cout << ((std::localtime(&time)->tm_mon > 9) ? '0' : NULL) <<  1 + std::localtime(&time)->tm_mon;
+	std::cout << ((std::localtime(&time)->tm_mday > 9) ? '0' : NULL) << std::localtime(&time)->tm_mday;
+	std::cout << "_";
+	std::cout << ((std::localtime(&time)->tm_hour > 9) ? '0' : NULL) << std::localtime(&time)->tm_hour;
+	std::cout << ((std::localtime(&time)->tm_min > 9) ? '0' : NULL) << std::localtime(&time)->tm_min;
+	std::cout << std::localtime(&time)->tm_sec;
+	std::cout << "] ";
 }
 
 

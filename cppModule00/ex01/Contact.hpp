@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 00:58:00 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/04/29 04:10:03 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/02 03:36:10 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,19 @@
 
 class Contact
 {
-	public:
+	private:
 		std::string phone;
 		std::string fname;
 		std::string lname;
 		std::string nickname;
 		std::string darkestsecret;
+	public:
+		void setContactInfo(std::string phone, std::string fname, std::string lname, std::string nickname, std::string darkest);
+		std::string	getPhone( void );
+		std::string	getFname( void );
+		std::string	getLname( void );
+		std::string	getNickname( void );
+		std::string	getDarkest( void );
 };
 
 #endif

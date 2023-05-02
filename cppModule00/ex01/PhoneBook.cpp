@@ -6,16 +6,26 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 11:51:23 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/01 09:25:24 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/02 03:37:47 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
+PhoneBook::PhoneBook()
+{
+	index = 0;
+	nospace = 0;
+}
+
+PhoneBook::~PhoneBook()
+{
+}
+
 void	PhoneBook::Search()
 {
 	int idx;
-	if (this->contacts[0].fname.empty())
+	if (this->contacts[0].getFname().empty())
 	{
 		std::cout << "No Contacts Yet!" << std::endl;
 		return;
@@ -37,18 +47,18 @@ void	PhoneBook::Search()
 			break;
 	}
 	idx = std::atoi(this->id.c_str());
-	if (this->contacts[idx].fname.empty())
+	if (idx > 7 || this->contacts[idx].getFname().empty())
 	{
 		std::cout << "No Member with id: " << idx << std::endl;
 		return ;
 	}
 	else
 	{
-		std::cout << "Phone Number: " << this->contacts[idx].phone << std::endl;
-		std::cout << "First Name: " << this->contacts[idx].fname << std::endl;
-		std::cout << "Last Name: " << this->contacts[idx].lname << std::endl;
-		std::cout << "Nick Name: " << this->contacts[idx].nickname << std::endl;
-		std::cout << "Darkest Secret: " << this->contacts[idx].darkestsecret << std::endl;
+		std::cout << "Phone Number: " << this->contacts[idx].getPhone() << std::endl;
+		std::cout << "First Name: " << this->contacts[idx].getFname() << std::endl;
+		std::cout << "Last Name: " << this->contacts[idx].getLname() << std::endl;
+		std::cout << "Nick Name: " << this->contacts[idx].getNickname() << std::endl;
+		std::cout << "Darkest Secret: " << this->contacts[idx].getDarkest() << std::endl;
 	}
 }
 
@@ -83,47 +93,47 @@ void	PhoneBook::UserInputs()
 			std::cout << "Darkest Secret: ";
 		Input();
 	}
+	this->contacts[index].setContactInfo(_phone, _fname, _lname, _nickname, _darkest);
 	this->index++;
 }
 
 void	PhoneBook::Input(void)
 {
-	int idx = this->index;
 	switch (this->checker)
 	{
 		case 0:
 		{
-			std::getline(std::cin, this->contacts[idx].phone);
-			if (!this->contacts[idx].phone.empty())
-				if (PhoneBook::IsNumber(this->contacts[idx].phone))
-					checker++;
+			std::getline(std::cin, this->_phone);
+			if (!this->_phone.empty())
+				if (PhoneBook::IsNumber(this->_phone))
+					this->checker++;
 			break;
 		}
 		case 1:
 		{
-			std::getline(std::cin, this->contacts[idx].fname);
-			if (!this->contacts[idx].fname.empty())
+			std::getline(std::cin, this->_fname);
+			if (!this->_fname.empty())
 				this->checker++;
 			break;
 		}
 		case 2:
 		{
-			std::getline(std::cin, this->contacts[idx].lname);
-			if (!this->contacts[idx].lname.empty())
+			std::getline(std::cin, this->_lname);
+			if (!this->_lname.empty())
 				this->checker++;
 			break;
 		}
 		case 3:
 		{
-			std::getline(std::cin, this->contacts[idx].nickname);
-			if (!this->contacts[idx].nickname.empty())
+			std::getline(std::cin, this->_nickname);
+			if (!this->_nickname.empty())
 				this->checker++;
 			break;
 		}
 		case 4:
 		{
-			std::getline(std::cin, this->contacts[idx].darkestsecret);
-			if (!this->contacts[idx].darkestsecret.empty())
+			std::getline(std::cin, this->_darkest);
+			if (!this->_darkest.empty())
 				this->checker++;
 			break;
 		}
@@ -154,9 +164,9 @@ void	PhoneBook::ShowAllContacts(int space)
 		std::cout << "|";
 		std::cout << std::right << std::setw(2) << index;
 		std::cout << "|";
-		std::cout << std::right << std::setw(10) << this->resize(this->contacts[index].fname) << "|";
-		std::cout << std::setw(10) << this->resize(this->contacts[index].lname) << "|";
-		std::cout << std::setw(10) << this->resize(this->contacts[index].nickname) << "|";
+		std::cout << std::right << std::setw(10) << this->resize(this->contacts[index].getFname()) << "|";
+		std::cout << std::setw(10) << this->resize(this->contacts[index].getLname()) << "|";
+		std::cout << std::setw(10) << this->resize(this->contacts[index].getNickname()) << "|";
 		std::cout << "\n";
 	}
 	std::cout << "*************************************\n";
