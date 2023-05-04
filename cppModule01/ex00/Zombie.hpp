@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 04:35:05 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/03 02:18:57 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/03 19:43:40 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class Zombie
 	private:
 		std::string name;
 	public:
+		Zombie();
 		Zombie(std::string name);
 		~Zombie();
 		void announce( void );
@@ -27,4 +28,5 @@ class Zombie
 
 Zombie *newZombie(std::string name);
 void	randomChump(std::string name);
+
 #endif

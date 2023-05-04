@@ -6,31 +6,24 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 01:53:09 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/03 17:10:49 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/03 21:08:20 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
 
 int main( void )
 {
-	std::string name;
-	std::cout << "[ Stack ] " << std::endl;
-	std::cout << "Create a Zombie: " << std::flush;
-	std::cin >> name;
-	
-	Zombie zombie(name);
-	zombie.announce();
+	std::string str = "HI THIS IS BRAIN";
+	std::string *stringPTR = &str;
+	std::string &stringREF = str;
 
-	std::cout << "{ Heap }" << std::endl;
-	std::cout << "Create Zombie: " << std::flush;
-	std::cin >> name;
-	
-	Zombie *zombie1 = newZombie(name);
-	zombie1->announce();
-	delete zombie1;
+	std::cout << "Memory address of {string}: " << &str << std::endl;
+	std::cout << "Memory address by {pointer}: " << stringPTR << std::endl;
+	std::cout << "Memory address by {reference}: " << &stringREF << std::endl;
 
-	std::cout << "RandomChump();" << std::endl;
-	randomChump("Random Zombie");
+	std::cout << "Value by {String}: " << str << std::endl;
+	std::cout << "Value by {Pointer}: " << *stringPTR << std::endl;
+	std::cout << "Value by {Reference}: " << stringREF << std::endl;
 	return (0);
 }
