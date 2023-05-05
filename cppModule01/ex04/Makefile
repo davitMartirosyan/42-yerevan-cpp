@@ -1,9 +1,10 @@
 NAME = main
 CC = c++
 CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
-HEADERS = $(wildcard *.hpp)
-SRC = $(wildcard *.cpp)
+SRC = $(wildcard *cpp)
 OBJ = $(SRC:.cpp=.o)
+HEADERS = $(wildcard *.hpp)
+
 all : $(NAME)
 
 $(NAME) : $(OBJ)
@@ -13,11 +14,11 @@ $(NAME) : $(OBJ)
 	$(CC) $(CC_FLAGS) -c $< -o $@
 
 fclean : clean
-	rm -rf $(NAME)
-
-clean :
 	rm -rf $(OBJ)
+
+clean : 
+	rm -rf $(NAME)
 
 re : fclean all
 
-.PHONNY: all re fclean clean 
+.PHONNY: all re fclean clean

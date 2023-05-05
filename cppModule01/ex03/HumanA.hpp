@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 02:38:04 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/04 03:16:19 by dmartiro         ###   ########.fr       */
+/*   Created: 2023/05/05 02:34:50 by dmartiro          #+#    #+#             */
+/*   Updated: 2023/05/05 02:46:36 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 
 class HumanA
 {
-	public:
+	private:
 		std::string name;
-		HumanA( std::string name, Weapon& weapon);
-		Weapon& weapon;
-		void attack( void ) const;
+		Weapon &weapon;
+	public:
+		HumanA( std::string name, Weapon &weapon );
+		~HumanA();
+		void attack( void );	
 };
 
 #endif

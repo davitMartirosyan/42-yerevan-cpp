@@ -5,14 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 21:33:58 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/04 03:05:06 by dmartiro         ###   ########.fr       */
+/*   Created: 2023/05/05 02:32:20 by dmartiro          #+#    #+#             */
+/*   Updated: 2023/05/05 02:55:39 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
-
-Weapon::Weapon( void )
+Weapon::Weapon(std::string type) : type(type)
 {
 }
 
@@ -20,17 +19,12 @@ Weapon::~Weapon()
 {
 }
 
-Weapon::Weapon(std::string type)
-{
-	this->setType(type);
-}
-
 const std::string& Weapon::getType( void )
 {
 	return (type);
 }
 
-void Weapon::setType(std::string type)
+void Weapon::setType( std::string type )
 {
-	this->type = type;
+	this->type = type;		
 }

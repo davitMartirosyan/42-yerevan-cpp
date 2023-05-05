@@ -5,29 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 02:54:29 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/05 02:56:04 by dmartiro         ###   ########.fr       */
+/*   Created: 2023/05/05 02:59:44 by dmartiro          #+#    #+#             */
+/*   Updated: 2023/05/05 04:20:11 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
-#include "HumanA.hpp"
-#include "HumanB.hpp"
-int main( void )
+#include "main.hpp"
+
+int main(int ac, char **av)
 {
+	(void)ac;
+	(void)av;
+	// if (ac != 4)
+	// {
+	// 	std::cout << "Paramater Error" << std::endl;
+	// 	return (1);
+	// }
+	
+	std::ifstream infile("file.txt");
+	std::string fileContent;
+	std::string content;
+	while (std::getline(infile, fileContent))
 	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
+		content += fileContent;
+		if (!fileContent.empty())
+			content += "\n";
 	}
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
-	}
+	
+	std::ofstream outfile("file.replace");
+	outfile << content << std::endl;
+	// std::cout << content << std::endl;
 }

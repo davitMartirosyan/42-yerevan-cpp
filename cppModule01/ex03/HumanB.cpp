@@ -5,25 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 02:41:19 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/04 02:49:48 by dmartiro         ###   ########.fr       */
+/*   Created: 2023/05/05 02:47:31 by dmartiro          #+#    #+#             */
+/*   Updated: 2023/05/05 02:50:36 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string name)
+HumanB::HumanB(std::string name) : name(name), weapon(nullptr)
 {
-	this->name = name;
 }
 
-void HumanB::setWeapon(Weapon weapon)
+HumanB::~HumanB()
 {
-	this->weapon = weapon;
 }
 
 void HumanB::attack( void )
 {
-	std::cout << this->name << " attacks with their "
-	<< this->weapon.getType() << std::endl;
+	if (weapon != nullptr)
+		std::cout << this->name << " attack with their " << this->weapon->getType() << std::endl;
+	else
+		std::cout << this->name << " has no Weapon " << std::endl;
+}
+
+void HumanB::setWeapon(Weapon &weapon)
+{
+	this->weapon = &weapon;
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 02:37:28 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/04 02:48:18 by dmartiro         ###   ########.fr       */
+/*   Created: 2023/05/05 02:39:24 by dmartiro          #+#    #+#             */
+/*   Updated: 2023/05/05 02:47:22 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 
 class HumanB
 {
-	public:
+	private:
 		std::string name;
+		Weapon *weapon;
+	public:
 		HumanB(std::string name);
-		Weapon weapon;
-		void setWeapon(Weapon weaopn);
+		~HumanB();
 		void attack( void );
+		void setWeapon(Weapon &weapon);
 };
 
 #endif
