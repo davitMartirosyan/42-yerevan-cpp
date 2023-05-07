@@ -1,6 +1,6 @@
 NAME = main
 CC = c++
-CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
+CC_FLAGS = -std=c++98 #-Wall -Wextra -Werror
 SRC = $(wildcard *cpp)
 OBJ = $(SRC:.cpp=.o)
 HEADERS = $(wildcard *.hpp)
