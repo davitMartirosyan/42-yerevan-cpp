@@ -1,9 +1,9 @@
-NAME = main
+NAME = Harl
 CC = c++
 CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
-SRC = $(wildcard *cpp)
+SRC = $(wildcard *.cpp)
 OBJ = $(SRC:.cpp=.o)
-HEADERS = $(wildcard *.hpp)
+HEADERS = Harl.hpp
 
 all : $(NAME)
 
@@ -14,14 +14,11 @@ $(NAME) : $(OBJ)
 	$(CC) $(CC_FLAGS) -c $< -o $@
 
 fclean : clean
-	rm -rf $(OBJ)
-
-clean : 
 	rm -rf $(NAME)
+
+clean :
+	rm -rf $(OBJ)
 
 re : fclean all
 
-build :
-	./main file.txt Lorem "Nissan Patfinder"
-
-.PHONNY: all re fclean clean build
+.PHONNY: re all fclean clean

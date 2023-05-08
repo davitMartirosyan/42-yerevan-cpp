@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 04:02:30 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/09 02:32:25 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/09 02:52:39 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,20 +89,22 @@ std::string File::GetContent( void )
 
 void File::ReplaceContent(const std::string& content)
 {
-	for(int i = 0; i < content.size(); ++i)
+	for(int i = 0; i < (int)content.size(); ++i)
 	{
 		if (find[0] == content[i])
+		{
 			if (!Found(i))
 				continue;
 			else
 				Replace(i);
+		}
 	}
 }
 
 void File::Replace(int pos)
 {
 	int i = 0;
-	while (i < replace.size())
+	while (i < (int)replace.size())
 	{
 		content[pos] = replace[i];
 		i++;
@@ -113,14 +115,14 @@ void File::Replace(int pos)
 int File::Found(int pos)
 {
 	int i = 0;
-	while (i < find.size())
+	while (i < (int)find.size())
 	{
 		if (find[i] != content[pos])
 			break;
 		i++;
 		pos++;
 	}
-	if (i != find.size())
+	if (i != (int)find.size())
 		return (0);
 	return (1);
 }
