@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 03:53:39 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/07 05:58:58 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/09 02:31:54 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class File
 		int Exist;
 		int NotExist;
 		int CheckArgs( void );
+		int Found(int pos);
 	public:
 		std::fstream IO;
 		std::string GetOldFile( void );
@@ -36,8 +37,10 @@ class File
 		std::string GetContent( void );
 		void OpenToRead( void );
 		void OpenToWrite( void );
+		void ReplaceContent(const std::string& content);
+		void Replace(int pos);
 	public:
-		int Set(char *filename, char *find, char *replace);
+		int Set(const char *filename, const char *find, const char *replace);
 		void SetContent ( void );
 };
 #endif

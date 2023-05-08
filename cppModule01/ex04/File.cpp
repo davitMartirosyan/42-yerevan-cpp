@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 04:02:30 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/07 06:05:09 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/09 02:32:25 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int File::CheckArgs( void )
 	return (1);
 }
 
-int File::Set(char *filename, char *find, char *replace)
+int File::Set(const char *filename, const char *find, const char *replace)
 {
 	if (!filename || !find || !replace)
 	{
@@ -60,7 +60,7 @@ std::string File::GetNewFile( void )
 
 void File::OpenToRead( void )
 {
-	IO.open(filename1, std::ios::in);
+	IO.open(filename1.c_str(), std::ios::in);
 	if (IO.is_open())
 		Exist = 1;
 	else
@@ -69,7 +69,7 @@ void File::OpenToRead( void )
 
 void File::OpenToWrite( void )
 {
-	IO.open(filename2, std::ios::out);
+	IO.open(filename2.c_str(), std::ios::out);
 	if (IO.is_open())
 		Exist = 2;
 	else
@@ -79,10 +79,48 @@ void File::OpenToWrite( void )
 void File::SetContent( void )
 {
 	while (std::getline(IO, line, '\0'))
-			content += line;
+			content += line;		
 }
 
 std::string File::GetContent( void )
 {
 	return (this->content);
+}
+
+void File::ReplaceContent(const std::string& content)
+{
+	for(int i = 0; i < content.size(); ++i)
+	{
+		if (find[0] == content[i])
+			if (!Found(i))
+				continue;
+			else
+				Replace(i);
+	}
+}
+
+void File::Replace(int pos)
+{
+	int i = 0;
+	while (i < replace.size())
+	{
+		content[pos] = replace[i];
+		i++;
+		pos++;
+	}
+}
+
+int File::Found(int pos)
+{
+	int i = 0;
+	while (i < find.size())
+	{
+		if (find[i] != content[pos])
+			break;
+		i++;
+		pos++;
+	}
+	if (i != find.size())
+		return (0);
+	return (1);
 }

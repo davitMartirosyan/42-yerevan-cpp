@@ -21,4 +21,7 @@ clean :
 
 re : fclean all
 
+build :
+	./main file.txt Lorem "Nissan Patfinder"
+
 .PHONNY: all re fclean clean
