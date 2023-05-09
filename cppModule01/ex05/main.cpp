@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 03:01:52 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/09 03:04:01 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/09 19:56:23 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,9 @@
 
 int main( void )
 {
-    std::cout << "ok\n";
+	Harl harl;
+	harl.complain("DEBUG");
+	harl.complain("INFO");
+	harl.complain("WARNING");
+	harl.complain("ERROR");
 }
