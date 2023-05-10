@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 03:00:31 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/09 19:55:40 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:35:56 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ Harl::~Harl()
 void Harl::debug( void )
 {
     std::cout << "[DEBUG]: Debug function" << std::endl;
-    
 }
 
 void Harl::info( void )
@@ -52,7 +51,6 @@ void Harl::complain( std::string level )
 		&Harl::warning,
 		&Harl::error,
 	};
-
 	int i = -1;
 	while (++i != 4 && level != sdl[i])
 	{

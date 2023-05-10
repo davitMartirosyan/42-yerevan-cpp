@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 02:57:06 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/09 18:27:11 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:34:50 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ class Harl
 		~Harl();
         void complain( std::string level);
 };
-
 
 #endif

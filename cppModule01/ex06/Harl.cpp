@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 03:00:31 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/10 01:46:34 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/10 17:36:23 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,25 +57,17 @@ void Harl::complain( std::string level )
 		&Harl::error,
 	};
 	while (++i != 4 && level != sdl[i]){}
-	if (i >= 4)
+	switch(i)
 	{
-		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-		return;
+		case 0:
+		{ (this->*ptr[i++])(); }
+		case 1:
+		{ (this->*ptr[i++])(); }
+		case 2:
+		{ (this->*ptr[i++])(); }
+		case 3:
+		{ (this->*ptr[i])(); break;}
+		default:
+		{std::cout << "[ Probably complaining about insignificant problems ]" << std::endl; break;}
 	}
-	while (i < (int)sdl->length())
-	{
-		switch(i)
-		{
-			case 0:
-			{ (this->*ptr[i])(); break; }
-			case 1:
-			{ (this->*ptr[i])(); break; }
-			case 2:
-			{ (this->*ptr[i])(); break; }
-			case 3:
-			{ (this->*ptr[i])(); break; }
-		}
-		i++;
-	}
-
 }

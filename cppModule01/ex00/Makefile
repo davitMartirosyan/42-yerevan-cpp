@@ -1,16 +1,15 @@
 NAME = zombie
-CC = c++
-CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
+CCX = c++
+CCXFLAGS = -std=c++98 -Wall -Wextra -Werror
 SRC = $(wildcard *.cpp)
 OBJ = $(SRC:.cpp=.o)
-
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	$(CC) $(CC_FLAGS) $(OBJ) -o $(NAME)
+	$(CCX) $(CCXFLAGS) $(OBJ) -o $(NAME)
 
-%.o : %.cpp zombie.hpp
-	$(CC) $(CC_FLAGS) -c $< -o $@
+%.o : %.cpp Zombie.hpp
+	$(CCX) $(CCXFLAGS) -c $< -o $@
 
 fclean : clean
 	rm -rf $(NAME)

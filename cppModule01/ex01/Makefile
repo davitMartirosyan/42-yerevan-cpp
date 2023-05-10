@@ -9,7 +9,7 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	$(CC) $(CC_FLAGS) $(OBJ) -o $(NAME)
 
-%.o : %.cpp zombie.hpp
+%.o : %.cpp Zombie.hpp
 	$(CC) $(CC_FLAGS) -c $< -o $@
 
 fclean : clean
