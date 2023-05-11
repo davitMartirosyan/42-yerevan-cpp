@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 02:00:35 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/10 23:24:39 by dmartiro         ###   ########.fr       */
+/*   Created: 2023/05/11 04:08:22 by dmartiro          #+#    #+#             */
+/*   Updated: 2023/05/11 04:08:40 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef _FIXED_HPP_
+#define _FIXED_HPP_
 
-void	randomChump(std::string name)
-{
-	Zombie zombo(name);
-	zombo.announce();
-}
+
+#endif
