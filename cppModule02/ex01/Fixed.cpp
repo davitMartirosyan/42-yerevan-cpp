@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 04:08:10 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/12 11:01:45 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:51:19 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,45 @@ const int Fixed::NumberFractionalBits = 8;
 Fixed::Fixed( void ) : FixedPointNumber(0)
 {
 	std::cout << "Default Constructor called" << std::endl;
-	FixedPointNumber = 0;
+}
+
+Fixed::Fixed(const int intNumber)
+{
+	std::cout << "Int Constructor called" << std::endl;
+	FixedPointNumber = intNumber << NumberFractionalBits;
+}
+
+Fixed::Fixed(const float floatNumber)
+{
+	std::cout << "Float Constructor called" << std::endl;
+	FixedPointNumber = static_cast<int>(roundf(floatNumber * (1 << NumberFractionalBits)));
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Desctructor called" << std::endl;
 }
 
 Fixed::Fixed (const Fixed& old)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy Constructor called" << std::endl;
 	*this = old;
 }
 
-Fixed& Fixed::operator =(const Fixed& op)
+Fixed& Fixed::operator=(const Fixed& op)
 {
 	if (this != &op)
 	{
-		std::cout << "Copy assignment operator called" << std::endl;
-		this->FixedPointNumber = op.getRawBits();
+		std::cout << "Copy Assignment Operator called" << std::endl;
+		this->FixedPointNumber = op.FixedPointNumber;
 	}
 	return (*this);
+}
+
+std::ostream& operator<<(std::ostream& stream, const Fixed& op)
+{
+	stream << op.toFloat();
+	return (stream);
 }
 
 int Fixed::getRawBits( void ) const
@@ -47,7 +64,17 @@ int Fixed::getRawBits( void ) const
 	return (FixedPointNumber);
 }
 
+float Fixed::toFloat( void ) const
+{
+	return (static_cast<float>(FixedPointNumber) / (1 << NumberFractionalBits));
+}
+
+int Fixed::toInt( void ) const
+{
+	return (FixedPointNumber >> NumberFractionalBits);
+}
+
 void Fixed::setRawBits(int const raw)
 {
-	FixedPointNumber = raw;	
+	this->FixedPointNumber = raw;
 }
