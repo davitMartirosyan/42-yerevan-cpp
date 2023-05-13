@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:29:14 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/13 15:49:27 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/13 15:51:10 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ Point::~Point()
 
 Point::Point(const Point& cp)
 {
-	this->x = cp.x;
-	this->y = cp.y;
+	x.setRawBits(cp.x.getRawBits());
 }
 
 Point& Point::operator=(const Point& op)
