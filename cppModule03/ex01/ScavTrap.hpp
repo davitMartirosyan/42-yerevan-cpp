@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 07:33:04 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/16 06:58:31 by dmartiro         ###   ########.fr       */
+/*   Created: 2023/05/16 06:57:02 by dmartiro          #+#    #+#             */
+/*   Updated: 2023/05/16 06:59:24 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef _SCAV_TRAP_HPP
+#define _SCAV_TRAP_HPP
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-int main( void )
-{
-	ClapTrap Sindel("Sindel");
-	ClapTrap Raiden("Raiden");
-	std::cout << "____________________________________________________\n\n";
-	Sindel.attack("Raiden");
-	Raiden.takeDamage(2);
-	Sindel.attack("Raiden");
-	std::cout << "____________________________________________________\n";
-}
+
+
+#endif
