@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 03:30:49 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/16 06:45:09 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/17 07:19:49 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ ClapTrap::ClapTrap( void )
 	EnergyPoints(10),
 	AttackDamage(0) 
 {
-	std::cout << GREEN << "ClapTrap " << RESET << YELLOW << this->Name << RESET << " Constructor was created!" << std::endl;
+	std::cout << GREEN << "ClapTrap " << RESET << YELLOW << this->Name << RESET << " Constructed!" << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string& name) 
 	: Name(name),
-	HitPoints(10),
-	EnergyPoints(1),
-	AttackDamage(0)
+	HitPoints(100),
+	EnergyPoints(50),
+	AttackDamage(20)
 {
-	std::cout << GREEN << "ClapTrap " << RESET << YELLOW << this->Name << RESET << " Constructor was created!" << std::endl;
+	std::cout << GREEN << "ClapTrap " << RESET << YELLOW << this->Name << RESET << " Constructed!" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
@@ -38,10 +38,12 @@ ClapTrap::~ClapTrap()
 ClapTrap::ClapTrap(const ClapTrap& cltp)
 {
 	*this = cltp;
+	std::cout << "ClapTrap " << GREEN << "copied with copy constructor" << RESET << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& cltp)
 {
+	std::cout << "ClapTrap " << GREEN << "copied with copy asignment operator" << RESET << std::endl;
 	if (this != &cltp)
 	{
 		this->Name = cltp.Name;
@@ -54,7 +56,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& cltp)
 
 void ClapTrap::attack(const std::string& target)
 {
-	if (HitPoints <= 0 || EnergyPoints <= 0)
+	if (EnergyPoints <= 0)
 	{
 		std::cout << GREEN << "ClapTrap " << RESET << PURPLE << Name << RESET <<  " Can't attack!" << std::endl;
 		return;
@@ -79,7 +81,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 	else
 	{
 		this->HitPoints -= amount;
-		std::cout << GREEN << "ClapTrap " << RESET << BLUE << this->Name << RESET << " takes damage!" << std::endl; 
+		std::cout << GREEN << "ClapTrap " << RESET << BLUE << this->Name << RESET << " takes " << amount << " damage!" << std::endl; 
 	}
 }
 

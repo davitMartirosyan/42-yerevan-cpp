@@ -6,36 +6,36 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 07:13:27 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/16 05:57:43 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/17 07:06:08 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _CLAP_TRAP_HPP
 #define _CLAP_TRAP_HPP
-# define RESET	"\e[0m"
-# define BOLD	"\e[1m"
-# define DIM	"\e[2m"
-# define ITAL	"\e[3m"
-# define ULINE	"\e[4m"
-# define BLACK	"\e[30m"
-# define RED	"\e[31m"
-# define GREEN	"\e[32m"
-# define YELLOW	"\e[33m"
-# define BLUE	"\e[34m"
-# define PURPLE	"\e[35m"
-# define CYAN	"\e[36m"
-# define WHITE	"\e[37m"
+#define RESET	"\e[0m"
+#define BOLD	"\e[1m"
+#define DIM	    "\e[2m"
+#define ITAL	"\e[3m"
+#define ULINE	"\e[4m"
+#define BLACK	"\e[30m"
+#define RED	    "\e[31m"
+#define GREEN	"\e[32m"
+#define YELLOW	"\e[33m"
+#define BLUE	"\e[34m"
+#define PURPLE	"\e[35m"
+#define CYAN	"\e[36m"
+#define WHITE	"\e[37m"
 
 #include <iostream>
 class ClapTrap
 {
-	private:
+	protected:
 		std::string Name;
 		unsigned int HitPoints;
 		unsigned int EnergyPoints;
 		unsigned int AttackDamage;
-	public: //constructors
 		ClapTrap( void );
+	public:
 		ClapTrap(const std::string& name);
 		ClapTrap(const ClapTrap& cltp);
 		ClapTrap& operator=(const ClapTrap& cltp);
