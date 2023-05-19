@@ -6,11 +6,19 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 02:54:19 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/19 00:49:57 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:13:42 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+
+ScavTrap::ScavTrap( void ) : ClapTrap()
+{
+	this->HitPoints = 100;
+	this->EnergyPoints = 50;
+	this->AttackDamage = 20;
+	std::cout << RED << "ScavTrap " << RESET << this->Name << " Default constructor Constructed!" << std::endl;
+}
 
 ScavTrap::ScavTrap(const std::string& name) 
 	: ClapTrap(name)
@@ -18,7 +26,7 @@ ScavTrap::ScavTrap(const std::string& name)
 	this->HitPoints = 100;
 	this->EnergyPoints = 50;
 	this->AttackDamage = 20;
-	std::cout << RED << "ScavTrap " << RESET << this->Name << " Constructed!" << std::endl;
+	std::cout << RED << "ScavTrap " << RESET << this->Name << "Parameterized constructor Constructed!" << std::endl;
 }
 ScavTrap::~ScavTrap()
 {

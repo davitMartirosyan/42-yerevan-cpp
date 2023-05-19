@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 07:33:04 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/17 07:04:32 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/18 05:49:32 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,19 @@
 #include "ScavTrap.hpp"
 int main( void )
 {
-	ScavTrap ash( "Ash" );
-    ScavTrap ash2( ash );
+	ScavTrap nightwolf( "NightWolf" );
+    ScavTrap fujin( nightwolf );
 
-    ash.attack( "the air" );
-    ash.takeDamage( 10 );
-    ash.beRepaired( 10 );
-    ash.guardGate();
+    nightwolf.attack( "the air" );
+    nightwolf.takeDamage(100);
+    
+    nightwolf.attack("the air");
+    nightwolf.takeDamage(10);
+    
+    nightwolf.attack("the air");
+    nightwolf.takeDamage(10);
+    
+    nightwolf.attack("the air");
+
+    // nightwolf.guardGate();
 }

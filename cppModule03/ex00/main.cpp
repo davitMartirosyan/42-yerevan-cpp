@@ -6,19 +6,17 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 07:33:04 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/16 06:58:31 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/18 05:29:37 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
 int main( void )
 {
 	ClapTrap Sindel("Sindel");
 	ClapTrap Raiden("Raiden");
 	std::cout << "____________________________________________________\n\n";
 	Sindel.attack("Raiden");
-	Raiden.takeDamage(2);
-	Sindel.attack("Raiden");
+	Raiden.takeDamage(10);
 	std::cout << "____________________________________________________\n";
 }
