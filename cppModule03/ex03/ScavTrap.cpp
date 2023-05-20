@@ -6,13 +6,13 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 02:54:19 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/20 06:38:30 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/21 02:39:49 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap( void )
+ScavTrap::ScavTrap( void ) : ClapTrap()
 {
 	this->HitPoints = 100;
 	this->EnergyPoints = 50;
@@ -20,7 +20,7 @@ ScavTrap::ScavTrap( void )
 	std::cout << "ScavTrap " << this->Name << " Default constructor called!" << std::endl;
 }
 
-ScavTrap::ScavTrap(const std::string& name)
+ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name)
 {
     this->Name = name;
 	this->HitPoints = 100;
@@ -28,12 +28,13 @@ ScavTrap::ScavTrap(const std::string& name)
 	this->AttackDamage = 20;
 	std::cout << "ScavTrap " << this->Name << " constructor called!" << std::endl;
 }
+
 ScavTrap::~ScavTrap()
 {
 	std::cout << "ScavTrap " << this->Name << " destructor called!" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& old)
+ScavTrap::ScavTrap(const ScavTrap& old) : ClapTrap(old)
 {
 	*this = old;
 	std::cout << "ScavTrap " << Name << " copy constructor called" << std::endl; 
@@ -43,6 +44,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& old)
 {
 	if (this != &old)
 	{
+		ClapTrap::operator=(old);
 		this->Name = old.Name;
 		this->HitPoints = old.HitPoints;
 		this->EnergyPoints = old.EnergyPoints;
