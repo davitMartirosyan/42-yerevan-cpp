@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 07:13:27 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/18 05:32:31 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/24 11:49:23 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class ClapTrap
 		ClapTrap(const std::string& name);
 		ClapTrap(const ClapTrap& cltp);
 		ClapTrap& operator=(const ClapTrap& cltp);
-		~ClapTrap();
+		virtual ~ClapTrap();
 	public:
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);

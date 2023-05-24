@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 03:30:49 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/18 06:01:21 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/24 12:50:11 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ClapTrap::ClapTrap( void )
 	EnergyPoints(10),
 	AttackDamage(0) 
 {
-	std::cout << GREEN << "ClapTrap " << RESET << YELLOW << this->Name << RESET << " Constructor was created!" << std::endl;
+	std::cout << "ClapTrap " << this->Name << " Constructor was created!" << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string& name) 
@@ -27,18 +27,18 @@ ClapTrap::ClapTrap(const std::string& name)
 	EnergyPoints(10),
 	AttackDamage(0)
 {
-	std::cout << GREEN << "ClapTrap " << RESET << YELLOW << this->Name << RESET << " Constructor was created!" << std::endl;
+	std::cout << "ClapTrap " << this->Name << " Constructor was created!" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << GREEN << "ClapTrap " << RESET << YELLOW << this->Name << RESET << " Destroyed!" << std::endl;
+	std::cout << "ClapTrap " << this->Name << " Destroyed!" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& cltp)
 {
 	*this = cltp;
-	std::cout << YELLOW << "ClapTrap " << Name << " Copy Constructor called!" << RESET << std::endl;
+	std::cout << "ClapTrap " << Name << " Copy Constructor called!" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& cltp)
@@ -49,7 +49,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& cltp)
 		this->HitPoints = cltp.HitPoints;
 		this->EnergyPoints = cltp.EnergyPoints;
 		this->AttackDamage = cltp.AttackDamage;
-		std::cout << YELLOW <<"ClapTrap " << Name << " Copy Assignment Operator called!" << RESET << std::endl;
+		std::cout << "ClapTrap " << Name << " Copy Assignment Operator called!" << std::endl;
 	}
 	return (*this);
 }
@@ -91,18 +91,18 @@ void ClapTrap::beRepaired(unsigned int amount)
 		return ;
 	if (this->EnergyPoints <= 0 || this->HitPoints <= 0)
 	{
-		std::cout << GREEN << "ClapTrap " << RESET << this->Name << " Can't repaired" << std::endl;
+		std::cout << "ClapTrap " << this->Name << " Can't repaired" << std::endl;
 	}
 	else if (this->HitPoints + amount > 10)
 	{
 		this->HitPoints = 10;
 		this->EnergyPoints--;
-		std::cout << GREEN << "ClapTrap " << RESET << this->Name << " health is fully!" << std::endl;
+		std::cout << "ClapTrap " << this->Name << " health is fully!" << std::endl;
 	}
 	else
 	{
 		this->HitPoints += amount;
 		this->EnergyPoints--;
-		std::cout << GREEN << "ClapTrap " << RESET << CYAN << this->Name << RESET << " takes " << amount << " points of amount and repaired!" << std::endl;
+		std::cout << "ClapTrap " << this->Name << " takes " << amount << " points of amount and repaired!" << std::endl;
 	}
 }
