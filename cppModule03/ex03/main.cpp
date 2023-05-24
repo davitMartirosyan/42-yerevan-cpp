@@ -17,7 +17,9 @@
 int main( void )
 {
 	DiamondTrap diamond("ono");
-
-    diamond.whoAmI();
     diamond.attack("ol");
+    std::cout << "\n\n\n";
+    diamond.whoAmI();
+    std::cout << "\n\n\n";
+
 }

@@ -14,6 +14,7 @@
 
 ScavTrap::ScavTrap( void ) : ClapTrap()
 {
+	this->Name = "ScavTrap-default";
 	this->HitPoints = 100;
 	this->EnergyPoints = 50;
 	this->AttackDamage = 20;
