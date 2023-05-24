@@ -12,19 +12,6 @@
 
 #ifndef _CLAP_TRAP_HPP
 #define _CLAP_TRAP_HPP
-# define RESET	"\e[0m"
-# define BOLD	"\e[1m"
-# define DIM	"\e[2m"
-# define ITAL	"\e[3m"
-# define ULINE	"\e[4m"
-# define BLACK	"\e[30m"
-# define RED	"\e[31m"
-# define GREEN	"\e[32m"
-# define YELLOW	"\e[33m"
-# define BLUE	"\e[34m"
-# define PURPLE	"\e[35m"
-# define CYAN	"\e[36m"
-# define WHITE	"\e[37m"
 #include <iostream>
 
 class ClapTrap

@@ -58,10 +58,10 @@ void ClapTrap::attack(const std::string& target)
 {
 	if (HitPoints <= 0 || EnergyPoints <= 0)
 	{
-		std::cout << GREEN << "ClapTrap " << RESET << PURPLE << Name << RESET <<  " Can't attack!" << std::endl;
+		std::cout << "ClapTrap " << Name <<  " Can't attack!" << std::endl;
 		return;
 	}
-	std::cout << GREEN << "ClapTrap " << RESET << PURPLE << Name << RESET << " attacks " << CYAN << target << RESET << ", causing " << AttackDamage << " points of damage!" << std::endl;
+	std::cout << "ClapTrap " << Name << " attacks " << target << ", causing " << AttackDamage << " points of damage!" << std::endl;
 	EnergyPoints--;
 }
 
@@ -71,17 +71,17 @@ void ClapTrap::takeDamage(unsigned int amount)
 		return ;
 	if (this->HitPoints == 0)
 	{
-		std::cout << GREEN << "ClapTrap " << RESET <<  this->Name << " can't take damage. It is already died :(" << std::endl;
+		std::cout << "ClapTrap " <<  this->Name << " can't take damage. It is already died :(" << std::endl;
 	}
 	else if ((int)this->HitPoints - (int)amount < 0)
 	{
 		this->HitPoints = 0;
-		std::cout << GREEN << "ClapTrap " << RESET <<  BLUE << this->Name << RESET <<  " died." << std::endl;
+		std::cout << "ClapTrap " << this->Name <<  " died." << std::endl;
 	}
 	else
 	{
 		this->HitPoints -= amount;
-		std::cout << GREEN << "ClapTrap " << RESET << BLUE << this->Name << RESET << " takes damage " << amount << " amount of points"  << std::endl;
+		std::cout << "ClapTrap " << this->Name << " takes damage " << amount << " amount of points"  << std::endl;
 	}
 }
 
