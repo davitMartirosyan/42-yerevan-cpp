@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 20:25:38 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/25 00:42:17 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/26 20:59:38 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "Animal.hpp"
 #include "Brain.hpp"
 
-class Cat : virtual public Animal
+class Cat : public Animal
 {
     private:
         Brain* catbrain;
@@ -25,6 +25,7 @@ class Cat : virtual public Animal
         Cat& operator=(const Cat& op);
         ~Cat();
         void makeSound( void ) const;
+        Brain& getBrain( void ) const;
 };
 
 #endif

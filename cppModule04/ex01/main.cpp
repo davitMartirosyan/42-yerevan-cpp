@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 19:56:41 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/25 00:35:11 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/26 21:01:34 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,18 @@
 #include "Cat.hpp"
 
 int main( void )
-{
-   const Animal* meta = new Animal();
-   const Animal* cat = new Cat();
-
-   meta->makeSound();
-   cat->makeSound();
-
-   delete cat;
-   delete meta;
+{   
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
+    Animal *catsanddogs[10];
+    delete j;
+    delete i;
+    for(int i = 0; i < 10; i++)
+    {
+        if(i % 2 == 0)
+            catsanddogs[i] = new Cat();
+        else
+            catsanddogs[i] = new Dog();
+    }
+    return (0);
 }

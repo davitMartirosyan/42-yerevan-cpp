@@ -1,6 +1,6 @@
 NAME = animal
 CC = c++
-CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
+CC_FLAGS = -std=c++98 #-Wall -Wextra -Werror
 SRC = Animal.cpp Dog.cpp Cat.cpp Brain.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 HEADERS = Animal.hpp Dog.hpp Cat.hpp Brain.hpp

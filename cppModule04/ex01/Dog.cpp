@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 20:11:37 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/25 00:44:00 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/26 19:00:53 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ Dog& Dog::operator=(const Dog& op)
 Dog::~Dog()
 {
     std::cout << "Dog dst" << std::endl;
+    delete dogbrain;
 }
 
 void Dog::makeSound( void ) const

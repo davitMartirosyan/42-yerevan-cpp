@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 00:27:36 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/25 00:32:48 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/26 19:21:15 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 Brain::Brain( void )
 {
     std::cout << "Brain dfl" << std::endl;
+    for(int i = 0; i < 100; i++)
+        ideas[i] = "ideal";
 }
 
 Brain::Brain(const Brain& op)
 {
-    *this = op;
     std::cout << "Brain cpy" << std::endl;
+    *this = op;
 }
 
 Brain& Brain::operator=(const Brain& op)

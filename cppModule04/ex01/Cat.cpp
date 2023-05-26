@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 20:27:34 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/25 00:43:39 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/26 20:59:40 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 Cat::Cat( void )
 {
+    std::cout << "Cat dfl" << std::endl;
     type = "Cat";
     catbrain = new Brain();
-    std::cout << "Cat dfl" << std::endl;
 }
 
 Cat::Cat(const Cat& op) : Animal(op)
@@ -30,6 +30,7 @@ Cat& Cat::operator=(const Cat& op)
     if (this != &op)
     {
         type = op.type;
+        this->catbrain = new Brain(*op.catbrain);
         std::cout << "Cat =op" << std::endl;
     }
     return (*this);
@@ -38,9 +39,15 @@ Cat& Cat::operator=(const Cat& op)
 Cat::~Cat()
 {
     std::cout << "Cat dst" << std::endl;
+    delete catbrain;
 }
 
 void Cat::makeSound( void ) const
 {
     std::cout << "Meow Meow" << std::endl;
+}
+
+Brain& Cat::getBrain( void ) const
+{
+    return (*catbrain);
 }

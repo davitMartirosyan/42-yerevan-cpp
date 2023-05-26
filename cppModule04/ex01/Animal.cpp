@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 20:04:24 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/24 20:59:47 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/26 19:42:24 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ Animal::Animal( void )
     std::cout << "Animal dfl" << std::endl;
 }
 
-Animal::Animal(const Animal& op)
+Animal::Animal(const Animal& op) : type(op.type)
 {
-    *this = op; std::cout << "Animal cpy" << std::endl;
+    std::cout << "Animal cpy" << std::endl;
 }
 
 Animal& Animal::operator=(const Animal& op)
