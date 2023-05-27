@@ -1,7 +1,7 @@
 NAME = main
 CC = c++
 CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
-SRC = AMateria.cpp main.cpp
+SRC = AMateria.cpp Cure.cpp Ice.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 HEADERS = AMateria.hpp Ice.hpp Cure.hpp
 

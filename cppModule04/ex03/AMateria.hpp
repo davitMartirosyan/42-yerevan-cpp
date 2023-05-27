@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 18:01:23 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/28 00:31:04 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/28 00:43:47 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 class AMateria
 {
     protected:
-        //[..]
         std::string const & type;
     public:
         AMateria(std::string const & type);
