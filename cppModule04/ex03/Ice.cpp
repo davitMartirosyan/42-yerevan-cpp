@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 19:57:40 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/29 04:10:11 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/30 02:06:36 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ Ice::Ice(const Ice& op)
 Ice& Ice::operator=(const Ice& op)
 {
     this->MateriaType = op.MateriaType;
+    return (*this);
 }
 
 Ice::~Ice() {}

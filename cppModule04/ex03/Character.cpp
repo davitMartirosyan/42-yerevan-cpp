@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 21:06:03 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/29 04:04:55 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/30 03:44:57 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ Character::Character( void )
 Character::Character(const std::string& name) : Name(name)
 {
     for(int i = 0; i < 4; i++)
-        inventory[i] = nullptr;
+        inventory[i] = NULL;
 }
 
 Character::~Character()
 {
     for(int i = 0; i < 4; i++)
-        if (inventory[i] != nullptr)
+        if (inventory[i] != NULL)
             delete inventory[i];
 }
 
@@ -51,7 +51,7 @@ void Character::equip(AMateria *m)
 {
     for(int i = 0; i < 4; i++)
     {
-        if (inventory[i] == nullptr)
+        if (inventory[i] == NULL)
         {
             inventory[i] = m;
             return ;
@@ -67,17 +67,17 @@ void Character::unequip(int idx)
         std::cout << "Unable to find inventory member by (" << idx << ") " << std::endl;
         return ;
     }
-    if (inventory[idx] == nullptr)
+    if (inventory[idx] == NULL)
     {
         std::cout << "Unable to return not located inventory member by (" << idx << ") " << std::endl;
         return ; 
     }
-    inventory[idx] = nullptr;
+    inventory[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-    if (idx >= 0 && idx < 4 && inventory[idx] != nullptr)
+    if (idx >= 0 && idx < 4 && inventory[idx] != NULL)
         inventory[idx]->use(target);
     return ;
 }

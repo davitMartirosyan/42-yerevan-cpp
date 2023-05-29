@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 19:35:07 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/29 03:51:23 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/30 03:30:45 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ std::string const & AMateria::getType( void ) const
 
 void AMateria::use(ICharacter& target)
 {
-    
+    std::cout << "* unknown materia used " << target.getName() << " *" << std::endl;
 }

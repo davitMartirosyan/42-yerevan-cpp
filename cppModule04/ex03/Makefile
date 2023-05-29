@@ -1,22 +1,22 @@
 NAME = main
 CC = c++
-CC_FLAGS = -I includes/  -std=c++98 #-Wall -Wextra -Werror
-SRC = src/main.cpp \
-	src/AMateria.cpp \
-	src/Ice.cpp \
-	src/Cure.cpp \
-	src/Character.cpp \
-	src/MateriaSource.cpp
+CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
+SRC = main.cpp \
+	AMateria.cpp \
+	Ice.cpp \
+	Cure.cpp \
+	Character.cpp \
+	MateriaSource.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-HEADERS = includes/AMateria.hpp \
-	includes/ICharacter.hpp \
-	includes/IMateriaSource.hpp \
-	includes/MateriaSource.hpp \
-	includes/Character.hpp \
-	includes/Ice.hpp \
-	includes/Cure.hpp
+HEADERS = AMateria.hpp \
+	ICharacter.hpp \
+	IMateriaSource.hpp \
+	MateriaSource.hpp \
+	Character.hpp \
+	Ice.hpp \
+	Cure.hpp
 
 all : $(NAME)
 

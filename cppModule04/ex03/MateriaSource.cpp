@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 00:41:53 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/29 03:32:51 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/30 02:06:48 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,38 @@
 MateriaSource::MateriaSource( void )
 {
     for(int i = 0; i < 4; i++)
-        inventory[i] = nullptr;
+        inventory[i] = NULL;
 }
 
 MateriaSource::~MateriaSource()
 {
+    for(int i = 0; i < 4; i++)
+        if (inventory[i] != NULL)
+            delete inventory[i];
 }
 
-// MateriaSource::MateriaSource(const MateriaSource& op)
-// {
-// }
+MateriaSource::MateriaSource(const MateriaSource& op)
+{
+    *this = op;
+}
 
-// MateriaSource& MateriaSource::operator=(const MateriaSource& op)
-// {
-// }
+MateriaSource& MateriaSource::operator=(const MateriaSource& op)
+{
+    if (this != &op)
+    {
+        for(int i = 0; i < 4; i++)
+            delete inventory[i];
+        for(int i = 0; i < 4; i++)
+            inventory[i] = op.inventory[i]->clone();
+    }
+    return (*this);
+}
 
 void MateriaSource::learnMateria(AMateria* m)
 {
     for(int i = 0; i < 4; i++)
     {
-        if (inventory[i] == nullptr)
+        if (inventory[i] == NULL)
         {
             inventory[i] = m;
             return ;
@@ -49,7 +61,7 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 {
     for(int i = 0; i < 4; i++)
     {
-        if (inventory[i] != nullptr && inventory[i]->getType() == type)
+        if (inventory[i] != NULL && inventory[i]->getType() == type)
                 return (inventory[i]->clone());
     }
     std::cout << "Inventory has no member (" << type << ") type." << std::endl;
