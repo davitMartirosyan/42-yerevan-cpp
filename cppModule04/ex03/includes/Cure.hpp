@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 19:35:25 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/27 20:33:39 by dmartiro         ###   ########.fr       */
+/*   Created: 2023/05/29 00:02:42 by dmartiro          #+#    #+#             */
+/*   Updated: 2023/05/29 04:06:46 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CURE_HPP
+#define CURE_HPP
 #include "AMateria.hpp"
-
-int main()
+ 
+class Cure : public AMateria
 {
-    
-}
+    public:
+        Cure( void );
+        Cure(const Cure& op);
+        Cure& operator=(const Cure& op);
+        ~Cure();
+    public:
+        AMateria* clone( void ) const;
+        void use(ICharacter& target);
+};
+
+#endif

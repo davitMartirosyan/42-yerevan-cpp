@@ -5,31 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/28 00:40:41 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/28 00:44:03 by dmartiro         ###   ########.fr       */
+/*   Created: 2023/05/29 00:11:57 by dmartiro          #+#    #+#             */
+/*   Updated: 2023/05/29 04:08:45 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 
-Cure::Cure( void )
+Cure::Cure( void ) : AMateria("cure")
 {
-    type = "cure";
-}
-Cure::Cure(const Cure& op)
-{
-    
-}
-Cure& Cure::operator=(const Cure& op)
-{
-    
-}
-Cure::~Cure()
-{
-    
+    MateriaType = "cure";
 }
 
-AMateria* Cure::clone( void )
+Cure::Cure(const Cure& op)
 {
-    
+    *this = op;
+}
+
+Cure& Cure::operator=(const Cure& op)
+{
+    this->MateriaType = op.MateriaType;
+    return (*this);
+}
+
+Cure::~Cure() {}
+
+AMateria* Cure::clone( void ) const
+{
+    return (new Cure(*this));
+}
+
+void Cure::use(ICharacter& target)
+{
+    std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }
