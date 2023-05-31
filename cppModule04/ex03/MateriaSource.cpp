@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 00:41:53 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/30 02:06:48 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/31 23:57:33 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,23 @@
 MateriaSource::MateriaSource( void )
 {
     for(int i = 0; i < 4; i++)
-        inventory[i] = NULL;
+       inventory[i] = NULL;
 }
 
 MateriaSource::~MateriaSource()
 {
     for(int i = 0; i < 4; i++)
+    {
         if (inventory[i] != NULL)
             delete inventory[i];
+        inventory[i] = 0;
+    }
 }
 
 MateriaSource::MateriaSource(const MateriaSource& op)
 {
+     for(int i = 0; i < 4; i++)
+        inventory[i] = NULL;
     *this = op;
 }
 
@@ -35,8 +40,12 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& op)
     if (this != &op)
     {
         for(int i = 0; i < 4; i++)
-            delete inventory[i];
-        for(int i = 0; i < 4; i++)
+        {
+            if (inventory[i] != NULL)
+                delete inventory[i];
+            inventory[i] = NULL;
+        }
+        for(int i = 0; i < 4 && op.inventory[i]; i++)
             inventory[i] = op.inventory[i]->clone();
     }
     return (*this);
@@ -53,7 +62,6 @@ void MateriaSource::learnMateria(AMateria* m)
         }
     }
     std::cout << "Inventory of MateriaSource is full" << std::endl;
-    delete m;
     return ;
 }
 

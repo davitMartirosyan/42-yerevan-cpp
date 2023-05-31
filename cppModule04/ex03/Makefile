@@ -1,6 +1,6 @@
 NAME = main
 CC = c++
-CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
+CC_FLAGS = -std=c++98 #-Wall -Wextra -Werror
 SRC = main.cpp \
 	AMateria.cpp \
 	Ice.cpp \

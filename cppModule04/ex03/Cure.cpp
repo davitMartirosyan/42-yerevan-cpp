@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 00:11:57 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/29 04:08:45 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/31 22:48:58 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@ Cure::Cure( void ) : AMateria("cure")
 
 Cure::Cure(const Cure& op)
 {
-    *this = op;
+    this->MateriaType = op.getType();
 }
 
 Cure& Cure::operator=(const Cure& op)
 {
-    this->MateriaType = op.MateriaType;
+    if (this != &op)
+        this->MateriaType = op.getType();
     return (*this);
 }
 

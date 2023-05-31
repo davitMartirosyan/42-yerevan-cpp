@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 21:06:03 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/30 03:44:57 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/01 00:26:58 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,41 @@
 
 Character::Character( void )
 {
+    for(int i = 0; i < 4; i++)
+        inventory[i] = 0;
 }
 
-Character::Character(const std::string& name) : Name(name)
+Character::Character(const std::string& name)
 {
+    Name = name;
     for(int i = 0; i < 4; i++)
-        inventory[i] = NULL;
+        inventory[i] = 0;
 }
 
-Character::~Character()
-{
-    for(int i = 0; i < 4; i++)
-        if (inventory[i] != NULL)
-            delete inventory[i];
-}
+Character::~Character(){}
 
 Character::Character(const Character& op)
 {
-    *this = op;
+    for(int i = 0; i < 4; i++)
+        if (op.inventory[i])
+            inventory[i] = op.inventory[i]->clone();
+    Name = op.Name;
 }
 
 Character& Character::operator=(const Character& op)
 {
     if (this != &op)
+    {
+        Name = op.Name;
         for(int i = 0; i < 4; i++)
-            inventory[i] = op.inventory[i]->clone();
+        {
+            delete inventory[i];
+            inventory[i] = 0;
+        }
+        for(int i = 0; i < 4; i++)
+            if (op.inventory[i])
+                inventory[i] = op.inventory[i]->clone();
+    }
     return (*this);
 }
 
@@ -51,17 +61,19 @@ void Character::equip(AMateria *m)
 {
     for(int i = 0; i < 4; i++)
     {
-        if (inventory[i] == NULL)
+        if (i <= 4 && inventory[i] == NULL)
         {
             inventory[i] = m;
             return ;
         }
     }
     std::cout << "Inventory of Character is full" << std::endl;
+    return ;
 }
 
 void Character::unequip(int idx)
 {
+    static int unuse = 0;
     if (idx < 0 || idx >= 4)
     {
         std::cout << "Unable to find inventory member by (" << idx << ") " << std::endl;
@@ -72,6 +84,7 @@ void Character::unequip(int idx)
         std::cout << "Unable to return not located inventory member by (" << idx << ") " << std::endl;
         return ; 
     }
+    unusedptrs[unuse++] = inventory[idx];
     inventory[idx] = NULL;
 }
 

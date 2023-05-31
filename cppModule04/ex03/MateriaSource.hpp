@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 00:42:02 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/29 04:10:22 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/31 22:21:01 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ class MateriaSource : public IMateriaSource
         MateriaSource( void );
         MateriaSource(const MateriaSource& op);
         MateriaSource& operator=(const MateriaSource& op);
-        ~MateriaSource();
+        virtual ~MateriaSource();
     public:
         void learnMateria(AMateria* m);
-        AMateria* createMateria(std::string const & type);
+        virtual AMateria* createMateria(std::string const & type);
 };
 
 #endif

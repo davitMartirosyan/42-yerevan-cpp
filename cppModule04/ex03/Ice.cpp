@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 19:57:40 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/30 02:06:36 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/31 22:55:32 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ Ice::Ice( void ) : AMateria("ice")
 
 Ice::Ice(const Ice& op)
 {
-    *this = op;
+    this->MateriaType = op.getType();
 }
 
 Ice& Ice::operator=(const Ice& op)
 {
-    this->MateriaType = op.MateriaType;
+    this->MateriaType = const_cast<std::string const &>(op.getType());
     return (*this);
 }
 

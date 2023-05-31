@@ -1,9 +1,9 @@
 NAME = bureaucrat
 CC = c++
 CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
-SRC = Bureaucrat.cpp main.cpp
+SRC = Bureaucrat.cpp main.cpp Form.cpp
 OBJ = $(SRC:.cpp=.o)
-HEADERS = Bureaucrat.hpp
+HEADERS = Bureaucrat.hpp Form.hpp
 
 all : $(NAME)
 

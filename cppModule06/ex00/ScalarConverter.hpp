@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 06:58:19 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/30 07:10:05 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/05/31 12:08:15 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class ScalarConverter
         ScalarConverter( void );
         ScalarConverter(const std::string& txt);
         ScalarConverter(const ScalarConverter& op);
-        ScalarConverter& operator=(const ScalartConverter& op);
+        ScalarConverter& operator=(const ScalarConverter& op);
         ~ScalarConverter();
     public:
         void convert(const std::string& argument);

@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 00:21:51 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/29 03:52:01 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/01 00:02:04 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 class Character : public ICharacter
 {
     private:
+        int id;
         std::string Name;
+        AMateria* unusedptrs[4];
         AMateria* inventory[4];
         Character( void );
     public:
