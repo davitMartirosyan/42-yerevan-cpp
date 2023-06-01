@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:29:49 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/31 19:28:12 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/01 03:28:58 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ Bureaucrat::~Bureaucrat()
 
 Bureaucrat::Bureaucrat(const Bureaucrat& op) : Name(op.Name), grade(op.grade)
 {
-    *this = op;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& op)
@@ -76,6 +75,11 @@ const char* Bureaucrat::GradeTooHighException::what( void ) const throw()
 const char* Bureaucrat::GradeTooLowException::what( void ) const throw()
 {
     return ("Grade is Low");
+}
+
+void Bureaucrat::signForm( void )
+{
+    
 }
 
 std::ostream& operator<<(std::ostream& cout, const Bureaucrat& buro)

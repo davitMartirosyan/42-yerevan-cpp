@@ -6,27 +6,24 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:24:40 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/31 19:29:24 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/01 05:04:32 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main( void )
 {
     try
     {
-        /* do some stuff with bureaucrats */
-        Bureaucrat bure("Donald Trump", 149);
-        std::cout << bure << std::endl;
-        bure.decrement();
-        std::cout << bure << std::endl;
-        bure.decrement();
-        std::cout << bure << std::endl;
+        Bureaucrat trump("Donald", 15);
+        Form form("form", 1, 150);
+        form.beSigned(trump);
     }
-    catch (std::exception & e)
+    catch(const std::exception& e)
     {
-        /* handle exception */
-        std::cout << e.what() << std::endl;
+        std::cerr << e.what() << '\n';
     }
+    
 }
