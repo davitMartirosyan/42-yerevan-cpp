@@ -1,9 +1,9 @@
 NAME = form
 CC = c++
 CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
-SRC = Bureaucrat.cpp main.cpp Form.cpp
+SRC = AForm.cpp Bureaucrat.cpp main.cpp PresidentalPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 OBJ = $(SRC:.cpp=.o)
-HEADERS = Bureaucrat.hpp Form.hpp
+HEADERS = AForm.hpp Bureaucrat.hpp PresidentalPardonForm.hpp RobotomyRequestForm.hpp ShrubberyCreationForm.hpp
 
 all : $(NAME)
 
@@ -21,4 +21,4 @@ clean :
 
 re : fclean all
 
-.PHONNY: all re clean fclean
+.PHONNY: all re fclean clean

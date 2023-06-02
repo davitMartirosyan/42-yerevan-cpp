@@ -6,16 +6,16 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:25:18 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/02 02:24:46 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/02 06:09:37 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 #include <iostream>
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -33,7 +33,7 @@ class Bureaucrat
         void decrement( void );
         const std::string& getName( void ) const;
         int getGrade( void ) const;
-        void signForm(Form& form);
+        void signForm(AForm& form);
     public:
         class GradeTooHighException : public std::exception
         {
