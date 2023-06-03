@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:25:18 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/02 06:09:37 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/03 12:20:00 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class Bureaucrat
         void decrement( void );
         const std::string& getName( void ) const;
         int getGrade( void ) const;
-        void signForm(AForm& form);
+        void signForm(AForm& AForm);
     public:
         class GradeTooHighException : public std::exception
         {
@@ -45,6 +45,8 @@ class Bureaucrat
             public:
                 virtual const char* what( void ) const throw();  
         };
+    public:
+        void executeForm(AForm const &form);
 };
 std::ostream& operator<<(std::ostream& cout, const Bureaucrat& buro);
 #endif

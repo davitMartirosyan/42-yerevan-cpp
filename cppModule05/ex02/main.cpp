@@ -5,12 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/02 06:02:42 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/02 06:03:10 by dmartiro         ###   ########.fr       */
+/*   Created: 2023/06/03 12:14:23 by dmartiro          #+#    #+#             */
+/*   Updated: 2023/06/03 12:25:52 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
 int main( void )

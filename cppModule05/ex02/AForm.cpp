@@ -6,14 +6,14 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 02:05:36 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/02 06:02:26 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/03 12:09:05 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
 AForm::AForm( void ) 
-    : Name("🇺🇸USA Election Form"),
+    : Name("Vladimir Putin"),
     signedStatus(false),
     gradeRequiredSign(1),
     gradeRequiredExecute(150)

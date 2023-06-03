@@ -1,9 +1,9 @@
-NAME = form
+NAME = execute
 CC = c++
 CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
-SRC = AForm.cpp Bureaucrat.cpp main.cpp PresidentalPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
+SRC = AForm.cpp Bureaucrat.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
-HEADERS = AForm.hpp Bureaucrat.hpp PresidentalPardonForm.hpp RobotomyRequestForm.hpp ShrubberyCreationForm.hpp
+HEADERS = AForm.hpp Bureaucrat.hpp PresidentialPardonForm.hpp RobotomyReuqestForm.hpp ShrubberyCreationForm.hpp
 
 all : $(NAME)
 
@@ -21,4 +21,4 @@ clean :
 
 re : fclean all
 
-.PHONNY: all re fclean clean
+.PHONNY: all fclean re clean
