@@ -6,13 +6,15 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 19:31:40 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/03 12:17:28 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/03 14:31:09 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
 #define FORM_HPP
 #include "Bureaucrat.hpp"
+#include <fstream>
+
 class Bureaucrat;
 
 class AForm
@@ -22,8 +24,8 @@ class AForm
         bool signedStatus;
         const int gradeRequiredSign;
         const int gradeRequiredExecute;
-        AForm( void );
     public:
+        AForm( void );
         AForm(const std::string name, int grSign, int grExec);
         AForm(const AForm& op);
         AForm& operator=(const AForm& op);
@@ -47,7 +49,7 @@ class AForm
                 virtual const char *what() const throw();
         };
     public:
-       virtual void execute(Bureaucrat & executor) const = 0;
+       virtual void execute(Bureaucrat const & executor) const = 0;
 };
 
 std::ostream& operator<<(std::ostream& co, const AForm& foo);

@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 19:31:40 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/02 05:35:55 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/03 14:09:20 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class Form
         bool signedStatus;
         const int gradeRequiredSign;
         const int gradeRequiredExecute;
-        Form( void );
     public:
+        Form( void );
         Form(const std::string name, int grSign, int grExec);
         Form(const Form& op);
         Form& operator=(const Form& op);

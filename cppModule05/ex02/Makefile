@@ -4,6 +4,7 @@ CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
 SRC = AForm.cpp Bureaucrat.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 HEADERS = AForm.hpp Bureaucrat.hpp PresidentialPardonForm.hpp RobotomyReuqestForm.hpp ShrubberyCreationForm.hpp
+EXTERNFILES = $(shell find . -type f | grep -E "_shrubbery")
 
 all : $(NAME)
 
@@ -15,6 +16,7 @@ $(NAME) : $(OBJ)
 
 fclean : clean
 	rm -rf $(NAME)
+	rm -rf $(EXTERNFILES)
 
 clean :
 	rm -rf $(OBJ)
