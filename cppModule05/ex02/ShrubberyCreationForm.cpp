@@ -6,14 +6,14 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 14:07:12 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/03 15:11:07 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/04 04:00:18 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm( void )
-    : AForm("dflname", 145, 137), target("dflName")
+    : AForm("dflshrubbery", 145, 137), target("dflshrubbery")
 {
 }
 
@@ -43,33 +43,33 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const 
 {
-    if(executor.getGrade() > getGradeExecute())
+    if (this->getSignedStatus() == false)
+        throw AForm::GradeNotSignedIn();
+    else if(executor.getGrade() > getGradeExecute())
         throw AForm::GradeTooLowException();
-    std::cout << "ok\n";
-    std::cout << getGradeExecute() << std::endl;
     std::ofstream file(target+"_shrubbery");
-    file << "                        .:." << std::endl
-         << "                        :|:" << std::endl
-         << "                       .:|:." << std::endl
-         << "                       ::|::" << std::endl
-         << "        :.             ::|::             .:" << std::endl
-         << "        :|:.          .::|::.          .:|:" << std::endl
-         << "        ::|:.         :::|:::         .:|:;" << std::endl
-         << "        `::|:.        :::|:::        .:|::'" << std::endl
-         << "         ::|::.       :::|:::       .::|:;" << std::endl
-         << "         `::|::.      :::|:::      .::|::'" << std::endl
-         << "          :::|::.     :::|:::     .::|::;" << std::endl
-         << "          `:::|::.    :::|:::    .::|::;'" << std::endl
-         << " `::.      `:::|::.   :::|:::   .::|::;'      .:;'" << std::endl
-         << "  `:::..    `:::|::.  :::|:::  .::|::;'    ..::;'" << std::endl
-         << "   `::::::.  `:::|::. :::|::: .::|::;'  .:::::;'" << std::endl
-         << "      `::::::.`:::|::.:::|::;.::|::;'.:::::;'" << std::endl
-         << "        `::::::.`::|::.::|::.::|::'.:::::;'" << std::endl
-         << "           `:::::::::|:::|:::|::::::::;'" << std::endl
-         << "              ``:::::::|:|::|:::::;''" << std::endl
-         << "                   `::::::::::;'" << std::endl
-         << "                  .:;'' ::: ``::." << std::endl
-         << "                        : : :" << std::endl
-         << "                         ':`" << std::endl;
+    file << "                        .:.                        " << std::endl
+         << "                        :|:                        " << std::endl
+         << "                       .:|:.                       " << std::endl
+         << "                       ::|::                       " << std::endl
+         << "        :.             ::|::             .:        " << std::endl
+         << "        :|:.          .::|::.          .:|:        " << std::endl
+         << "        ::|:.         :::|:::         .:|:;        " << std::endl
+         << "        `::|:.        :::|:::        .:|::'        " << std::endl
+         << "         ::|::.       :::|:::       .::|:;         " << std::endl
+         << "         `::|::.      :::|:::      .::|::'         " << std::endl
+         << "          :::|::.     :::|:::     .::|::;          " << std::endl
+         << "          `:::|::.    :::|:::    .::|::;'          " << std::endl
+         << " `::.      `:::|::.   :::|:::   .::|::;'      .:;' " << std::endl
+         << "  `:::..    `:::|::.  :::|:::  .::|::;'    ..::;'  " << std::endl
+         << "   `::::::.  `:::|::. :::|::: .::|::;'  .:::::;'   " << std::endl
+         << "      `::::::.`:::|::.:::|::;.::|::;'.:::::;'      " << std::endl
+         << "        `::::::.`::|::.::|::.::|::'.:::::;'        " << std::endl
+         << "           `:::::::::|:::|:::|::::::::;'           " << std::endl
+         << "              ``:::::::|:|::|:::::;''              " << std::endl
+         << "                   `::::::::::;'                   " << std::endl
+         << "                  .:;'' ::: ``::.                  " << std::endl
+         << "                       : : :                       " << std::endl
+         << "                        ':`                        " << std::endl;
          file.close();
 }

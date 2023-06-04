@@ -6,13 +6,14 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:25:18 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/03 12:20:00 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/04 05:37:20 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 #include <iostream>
+#include <random>
 #include "AForm.hpp"
 
 class AForm;
@@ -34,6 +35,7 @@ class Bureaucrat
         const std::string& getName( void ) const;
         int getGrade( void ) const;
         void signForm(AForm& AForm);
+        void executeForm(AForm const &form);
     public:
         class GradeTooHighException : public std::exception
         {
@@ -45,8 +47,6 @@ class Bureaucrat
             public:
                 virtual const char* what( void ) const throw();  
         };
-    public:
-        void executeForm(AForm const &form);
 };
 std::ostream& operator<<(std::ostream& cout, const Bureaucrat& buro);
 #endif

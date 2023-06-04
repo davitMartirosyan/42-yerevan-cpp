@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:24:40 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/02 05:36:31 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/04 01:54:24 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main( void )
 {
     try
     {
-        Bureaucrat bureaucrat("donald trump", 2);
+        Bureaucrat bureaucrat("donald trump", 0);
         Form form("formName", 3, 150);
         bureaucrat.decrement();
         bureaucrat.signForm(form);

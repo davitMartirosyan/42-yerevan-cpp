@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 02:05:36 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/03 14:09:06 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/04 03:39:59 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ const char* AForm::GradeTooHighException::what( void ) const throw()
 const char* AForm::GradeTooLowException::what( void ) const throw()
 {
     return ("AForm Grade is Low");
+}
+
+const char* AForm::GradeNotSignedIn::what( void ) const throw()
+{
+    return ("isSigned == false");
 }
 
 const std::string AForm::getName( void ) const { return (this->Name); }

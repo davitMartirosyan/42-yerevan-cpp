@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/04 05:49:12 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/04 06:00:59 by dmartiro         ###   ########.fr       */
+/*   Created: 2023/06/04 01:27:24 by dmartiro          #+#    #+#             */
+/*   Updated: 2023/06/04 03:30:04 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRESIDENTIALPARDONFORM_HPP
-#define PRESIDENTIALPARDONFORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
 #include "AForm.hpp"
 
-class PresidentialPardonForm : public AForm
+class RobotomyRequestForm : public AForm
 {
     private:
         std::string target;
-    public: 
-        PresidentialPardonForm( void );
-        PresidentialPardonForm(const std::string tar);
-        PresidentialPardonForm(const PresidentialPardonForm& op);
-        PresidentialPardonForm& operator=(const PresidentialPardonForm& op);
-        ~PresidentialPardonForm();
     public:
-        void execute(Bureaucrat const & executor) const;  
+        RobotomyRequestForm( void );
+        RobotomyRequestForm(const std::string tar);
+        RobotomyRequestForm(const RobotomyRequestForm& op);
+        RobotomyRequestForm& operator=(const RobotomyRequestForm& op);
+        ~RobotomyRequestForm();
+    public:
+        void execute(Bureaucrat const & executor) const;
 };
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 20:27:34 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/26 20:59:40 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/04 01:34:52 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ Cat& Cat::operator=(const Cat& op)
     if (this != &op)
     {
         type = op.type;
+        delete this->catbrain;
         this->catbrain = new Brain(*op.catbrain);
         std::cout << "Cat =op" << std::endl;
     }

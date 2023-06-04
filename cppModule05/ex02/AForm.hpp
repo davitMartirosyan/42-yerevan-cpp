@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 19:31:40 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/03 14:31:09 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/04 05:04:03 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ class AForm
         {
             public:
                 virtual const char *what() const throw();
+        };
+        class GradeNotSignedIn : public std::exception
+        {
+            public:
+                const char* what( void ) const throw();
         };
     public:
        virtual void execute(Bureaucrat const & executor) const = 0;

@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 20:11:37 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/30 02:23:51 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/04 01:35:09 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ Dog& Dog::operator=(const Dog& op)
     if (this != &op)
     {
         type = op.type;
+        delete this->dogbrain;
         this->dogbrain = new Brain(*op.dogbrain);
         std::cout << "Dog =op" << std::endl;
     }

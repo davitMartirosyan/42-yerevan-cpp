@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:29:49 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/03 12:14:02 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/04 06:23:54 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Bureaucrat::Bureaucrat(void) : Name("Joe Biden"), grade(0)
 Bureaucrat::Bureaucrat(const std::string name, int grade)
     : Name(name),
     grade(grade)
-{ 
+{
     if (grade < 1)
         throw GradeTooHighException();
     else if (grade > 150)
@@ -84,15 +84,29 @@ void Bureaucrat::signForm(AForm& form)
         form.beSigned(*this);
         std::cout << "[" << this->getName() << "]" << " signed to " << form.getName() << std::endl;
     }
-    catch(AForm::GradeTooLowException& e)
+    catch(const std::exception& e)
     {
         std::cout << "[" << this->getName() << "]"
         << " couldn't sign to "
         << form.getName()
-        << " because " << e.what()
+        << " because: " << e.what()
         << std::endl;
     }
-    
+}
+
+void Bureaucrat::executeForm(AForm const &form)
+{
+    try
+    {
+        form.execute(*this);
+        std::cout << "[" << this->getName() << "]" << " executed " << form.getName() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << "[" << this->getName() << "]"
+        << " couldn't execute " << form.getName() <<  " because: "
+        << e.what() << std::endl;
+    }
 }
 
 std::ostream& operator<<(std::ostream& cout, const Bureaucrat& buro)
