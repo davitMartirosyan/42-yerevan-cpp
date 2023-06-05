@@ -1,0 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/06 01:43:40 by dmartiro          #+#    #+#             */
+/*   Updated: 2023/06/06 02:13:28 by dmartiro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef INTERN_HPP
+#define INTERN_HPP
+#include "Form.hpp"
+
+class Form;
+
+class Intern
+{
+    public:
+        Intern( void );
+        Intern(const Intern&);
+        Intern& operator=(Intern& op);
+        ~Intern();
+    public:
+        Form* makeForm(const std::string formName, const std::string formTarget);
+};
+
+#endif
