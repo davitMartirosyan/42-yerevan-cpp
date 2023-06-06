@@ -6,13 +6,13 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:29:49 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/05/31 19:28:12 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:40:57 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(void) : Name("Joe Biden"), grade(0)
+Bureaucrat::Bureaucrat(void) : Name("Joy"), grade(0)
 {
 }
 

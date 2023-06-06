@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:29:49 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/06 01:06:00 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:32:22 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void Bureaucrat::signForm(Form& form)
     try
     {
         form.beSigned(*this);
-        std::cout << "[" << this->getName() << "]" << " signed to " << form.getName() << std::endl;
     }
     catch(const std::exception& e)
     {
@@ -99,7 +98,6 @@ void Bureaucrat::executeForm(Form const &form)
     try
     {
         form.execute(*this);
-        std::cout << "[" << this->getName() << "]" << " executed " << form.getName() << std::endl;
     }
     catch(const std::exception& e)
     {

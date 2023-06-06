@@ -53,6 +53,11 @@ class Form
             public:
                virtual const char* what( void ) const throw();
         };
+        class NotFoundException : public std::exception
+        {
+            public:
+                virtual const char* what( void ) const throw();
+        };
     public:
        virtual void execute(Bureaucrat const & executor) const = 0;
 };

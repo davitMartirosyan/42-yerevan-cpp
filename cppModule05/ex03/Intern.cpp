@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 01:56:21 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/06 02:14:47 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/06 19:47:50 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,25 @@ Intern::~Intern()
 {
 }
 
-Form* Intern::makeForm(const std::string formName, const std::string formTarget)
+Form* Intern::makeForm(std::string formName, const std::string formTarget) const
 {
-    (void)formTarget;
+    int idx = -1;
     std::string forms[3] = {
         "robotomy request",
         "shrubbery creation",
         "presidential pardon"
     };
-    int idx = -1;
-    while (formName != forms[++idx]){}
-    std::cout << idx << std::endl;
-
+    while (idx != 3 && formName != forms[++idx]){}
+    switch(idx)
+    {
+        case 0:
+            return (new RobotomyRequestForm(formTarget));
+        case 1:
+            return (new ShrubberyCreationForm(formTarget));
+        case 2:
+            return (new PresidentialPardonForm(formTarget));
+        default:
+           throw Form::NotFoundException();
+    }
     return (NULL);
 }

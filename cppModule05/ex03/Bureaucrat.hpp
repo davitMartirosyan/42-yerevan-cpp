@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:25:18 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/06 01:26:00 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/06 19:52:58 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define BUREAUCRAT_HPP
 #include <iostream>
 #include <cstdlib>
+#include <random>
 #include <string>
 #include "Form.hpp"
 

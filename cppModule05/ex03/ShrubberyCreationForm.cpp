@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 14:07:12 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/06 01:43:12 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:33:05 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,5 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
          << "                       : : :                       " << std::endl
          << "                        ':`                        " << std::endl;
          file.close();
+        std::cout << "[" << executor.getName() << "]" << " executed " << this->getName() << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:24:40 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/04 01:54:24 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:51:45 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@ int main( void )
 {
     try
     {
-        Bureaucrat bureaucrat("donald trump", 0);
-        Form form("formName", 3, 150);
-        bureaucrat.decrement();
+        Bureaucrat bureaucrat("donald trump", 5);
+        Form form("formName", 4, 150);
         bureaucrat.signForm(form);
         std::cout << form << std::endl;
         std::cout << "___________________________" << std::endl;
         std::cout << bureaucrat << std::endl;
-    }catch (std::exception &e)
+    }catch (const std::exception &e)
     {
         std::cout << e.what() << std::endl;
     }  

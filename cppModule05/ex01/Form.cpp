@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 02:05:36 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/03 14:09:26 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:48:41 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void Form::beSigned(Bureaucrat& buro)
 
 std::ostream& operator<<(std::ostream& cout, const Form& foo)
 {
-    cout << foo.getName() << std::endl
+    cout << "Form Name " << foo.getName() << std::endl
          << "SignedStatus - " << foo.getSignedStatus() << std::endl
          << "GradeSign - " << foo.getGradeSign() << std::endl
          << "GradeExecute - " << foo.getGradeExecute();

@@ -65,6 +65,11 @@ const char* Form::GradeNotSignedIn::what( void ) const throw()
     return ("isSigned == false");
 }
 
+const char* Form::NotFoundException::what( void ) const throw()
+{
+    return ("The Form is not found");
+}
+
 const std::string Form::getName( void ) const { return (this->Name); }
 bool Form::getSignedStatus( void )const { return (this->signedStatus); }
 int Form::getGradeSign( void ) const { return (this->gradeRequiredSign); }
@@ -76,6 +81,7 @@ void Form::beSigned(Bureaucrat& buro)
         signedStatus = true;
     else
         throw Form::GradeTooLowException();
+    std::cout << "[" << buro.getName() << "]" << " signed to " << this->getName() << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& cout, const Form& foo)
