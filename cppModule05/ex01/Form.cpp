@@ -6,17 +6,17 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 02:05:36 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/06 18:48:41 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/07 23:28:27 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
 Form::Form( void ) 
-    : Name("Vladimir Putin"),
+    : Name("default_form"),
     signedStatus(false),
     gradeRequiredSign(1),
-    gradeRequiredExecute(1)
+    gradeRequiredExecute(150)
 {
 }
 
@@ -34,7 +34,7 @@ Form::Form(const std::string name, int grSign, int grExec)
 
 Form::Form(const Form& op)
     : Name(op.Name),
-    gradeRequiredSign(op.gradeRequiredExecute),
+    gradeRequiredSign(op.gradeRequiredSign),
     gradeRequiredExecute(op.gradeRequiredExecute)
 {
 }

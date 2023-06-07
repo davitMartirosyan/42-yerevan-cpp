@@ -6,14 +6,14 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:25:18 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/04 05:37:20 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:24:14 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 #include <iostream>
-#include <random>
+#include <cstdlib>
 #include "AForm.hpp"
 
 class AForm;

@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 01:27:14 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/06 20:22:47 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/07 22:58:23 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-    float r;
     std::srand(static_cast<unsigned int>(time(NULL)));
-    r = static_cast<float>(rand()) * static_cast<float>(1) / RAND_MAX;
     if (this->getSignedStatus() == false)
         throw Form::GradeNotSignedIn();
     else if (executor.getGrade() > getGradeExecute())

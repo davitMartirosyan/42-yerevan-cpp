@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 12:14:23 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/06 00:45:19 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:35:53 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,15 @@ int main( void )
 
         
         //Byurokratner
-        Bureaucrat buro("Escobar", 130);
+        Bureaucrat buro("Escobar", 0);
         
         //Formaner
         ShrubberyCreationForm shrubbery("Cannabis"); // 145 137
-        RobotomyRequestForm roboto("Roboto"); // 72 45
-        PresidentialPardonForm pardon("pardon"); // 25 5
-        
+
         buro.signForm(shrubbery);
-        buro.signForm(roboto);
-        // buro.signForm(pardon);
-        
-        buro.executeForm(shrubbery);
-        buro.executeForm(roboto);
+        // shrubbery.beSigned(buro);
+
+        // buro.executeForm(shrubbery);
     }
     catch(const AForm::GradeTooLowException & e)
     {

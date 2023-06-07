@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 12:14:23 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/06 19:55:20 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/07 22:59:22 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main( void )
         Form* fo;
     
         
-        fo = aaa.makeForm("robotomy request", "transform");
+        fo = aaa.makeForm(NULL, "transform");
         buro.signForm(*fo);
         buro.executeForm(*fo);   
     }

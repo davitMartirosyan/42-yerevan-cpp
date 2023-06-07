@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:29:49 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/04 06:23:54 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:36:26 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ Bureaucrat::Bureaucrat(void) : Name("Joe Biden"), grade(0)
 {
 }
 
-Bureaucrat::Bureaucrat(const std::string name, int grade)
+Bureaucrat::Bureaucrat(const std::string name, int gr)
     : Name(name),
-    grade(grade)
+    grade(gr)
 {
     if (grade < 1)
         throw GradeTooHighException();

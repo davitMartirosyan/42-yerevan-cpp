@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 01:27:14 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/04 07:04:33 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:23:54 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
     else if (executor.getGrade() > getGradeExecute())
         throw AForm::GradeTooLowException();
     std::cout << "Dxkly cxkly..... DDDDDDD... grrrrrr..." << std::endl;
-    srand(time(0));
-    if ((double)(rand()) / (double)(rand()) >= 0.05)
+    std::srand(time(0));
+    if ((double)(std::rand()) / (double)(std::rand()) >= 0.05)
         std::cout << this->getName() << " robotomized succesfully 50% of the time." << std::endl;
     else
         std::cout << this->getName() << " robotomy failed." << std::endl;

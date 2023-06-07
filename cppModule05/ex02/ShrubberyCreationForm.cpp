@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 14:07:12 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/04 04:00:18 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:25:07 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
         throw AForm::GradeNotSignedIn();
     else if(executor.getGrade() > getGradeExecute())
         throw AForm::GradeTooLowException();
-    std::ofstream file(target+"_shrubbery");
+    std::string t = target + "_shrubbery";
+    std::ofstream file(t.c_str());
     file << "                        .:.                        " << std::endl
          << "                        :|:                        " << std::endl
          << "                       .:|:.                       " << std::endl

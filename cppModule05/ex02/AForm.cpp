@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 02:05:36 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/04 03:39:59 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/07 23:28:57 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ AForm::AForm(const std::string name, int grSign, int grExec)
 
 AForm::AForm(const AForm& op)
     : Name(op.Name),
-    gradeRequiredSign(op.gradeRequiredExecute),
+    gradeRequiredSign(op.gradeRequiredSign),
     gradeRequiredExecute(op.gradeRequiredExecute)
 {
 }

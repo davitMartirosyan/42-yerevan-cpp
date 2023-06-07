@@ -34,7 +34,7 @@ Form::Form(const std::string name, int grSign, int grExec)
 
 Form::Form(const Form& op)
     : Name(op.Name),
-    gradeRequiredSign(op.gradeRequiredExecute),
+    gradeRequiredSign(op.gradeRequiredSign),
     gradeRequiredExecute(op.gradeRequiredExecute)
 {
 }
