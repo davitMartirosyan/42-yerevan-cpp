@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 05:15:29 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/09 07:13:42 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/13 07:22:11 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,39 @@
 #include <iostream>
 #include <string>
 #include <climits>
+#include <cfloat>
 #include <cmath>
-#include <ctype.h>
-#include <stdio.h>
+#include <cctype>
+#include <locale>
+enum types
+{
+  OK = 1,
+  ERR,
+  LITEAL,
+  CHAR,
+  INT,
+  FLOAT,
+  DOUBLE  
+};
+
 
 class ScalarConverter
 {
     private:
-        bool cidf;
-        char c;
-        int i;
-        float f;
-        double d;
+        static std::string str;
+        static double lit;
+        static int status; // 1 2 3 4
     public:
         ScalarConverter( void );
         ScalarConverter(const ScalarConverter& op);
         ScalarConverter& operator=(const ScalarConverter& op);
         ~ScalarConverter();
     public:
-        void convert(std::string literal);
-    public:
-        void Char( void );
-        // int isInt(std::string i);
-        // int isFloat(std::string f);
-        // int isDouble(std::string d);
-    public:
-        char getChar( void );
-        int getInt( void );
-        float getFloat( void );
-        double getDouble( void );
+        static void convert(char * literal);
+        static void possibilities( void );
+        static bool isLiteral( void );
+        static void Char( void );
+        static void Int( void );
 };
 
 #endif
