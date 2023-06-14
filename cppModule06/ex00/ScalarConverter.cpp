@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 05:18:26 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/14 12:05:31 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/14 17:02:26 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ bool ScalarConverter::isChar( void )
 bool ScalarConverter::isInt( void )
 {
     int size = 0;
-    if (str.empty())
-        return (false);
     for(int i = 0; i < str.size(); i++)
     {
         if (std::isdigit(str[i]))
@@ -70,18 +68,37 @@ bool ScalarConverter::isInt( void )
 
 bool ScalarConverter::isFloat( void )
 {
-    //check is float number or not
-    return (true);
+    int d = 0;
+    int size = 0;
+    if (str.front() == '0')
+        return (false);
+    for(int i = 0; i < str.size(); i++)
+    {
+        if (str[i] == '.' || str[i] == '+' || str[i] == '-')
+        {
+            ++d;
+            continue;
+        }
+        else if (std::isdigit(str[i]))
+            size++;
+    }
+    size+=d+1;
+    std::cout << str.size() << " : " << size << std::endl;
+    if (str.back() == 'f' && str.size() == size)
+        return (true);
+    return (false);
 }
 
 void ScalarConverter::convert(char * literal)
 {
-    char *endl;
     if (literal == NULL)
         return ;
+    char *endl;
     std::cout << std::fixed <<  std::setprecision(1);
     str = literal;
     lit = std::strtod(literal, &endl);
+    if (str.empty())
+        return ;
     if (isLiteral(literal))
     {
         type = LITERAL;
