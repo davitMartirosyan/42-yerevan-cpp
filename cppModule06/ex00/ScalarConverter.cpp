@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 05:18:26 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/13 07:30:04 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/14 12:05:31 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 std::string ScalarConverter::str;
 double ScalarConverter::lit = 0.0;
-int ScalarConverter::status = 0;
+int ScalarConverter::type = 0;
 
 ScalarConverter::ScalarConverter( void )
 {
@@ -34,58 +34,75 @@ ScalarConverter::~ScalarConverter()
 {
 }
 
-void ScalarConverter::possibilities( void )
-{
-    try
-    {
-        lit = std::stod(str);
-        status = 1;
-    }
-    catch(...)
-    {
-        status = 2;
-    }
-}
 
-bool ScalarConverter::isLiteral( void )
+
+bool ScalarConverter::isLiteral(const char *literal)
 {
-    if (str.size() == 3 || (str.size() == 4 && (str[0] == '+' || str[0] == '-')))
+    if (str.size() >= 3 && str.size() <= 5)
     {
-        if (lit == INFINITY || lit == -INFINITY || str == "nan" \
-            || str == "+nan" || str == "-nan")
+        if (lit == INFINITY || lit == -INFINITY || lit != lit)
             return (true);
     }
     return (false);
 }
 
+bool ScalarConverter::isChar( void )
+{
+    if (str.size() == 1 && !std::isdigit(str[0]) && std::isprint(str[0]))
+        return (true);
+    return (false);
+}
+
+bool ScalarConverter::isInt( void )
+{
+    int size = 0;
+    if (str.empty())
+        return (false);
+    for(int i = 0; i < str.size(); i++)
+    {
+        if (std::isdigit(str[i]))
+            size++;
+    }
+    if (str.size() == size)
+        return (true);
+    return (false);
+}
+
+bool ScalarConverter::isFloat( void )
+{
+    //check is float number or not
+    return (true);
+}
+
 void ScalarConverter::convert(char * literal)
 {
+    char *endl;
     if (literal == NULL)
         return ;
+    std::cout << std::fixed <<  std::setprecision(1);
     str = literal;
-    possibilities();
-    if (isLiteral())
-        status = 3;
-    Char();
-    Int();
-}
-
-void ScalarConverter::Int( void )
-{
-    if (status == 3)
-        std::cout << "int: impossible" << std::endl;
-    else if ((int)lit > std::numeric_limits<int>::max() || (int)lit < std::numeric_limits<int>::min())
-        std::cout << "int: impossible" << std::endl;
-    else
-        std::cout << "int: " << static_cast<int>(lit) << std::endl;
-}
-
-void ScalarConverter::Char( void )
-{
-    if (status == 3)
-        std::cout << "char: impossible" << std::endl;
-    else if (!std::isprint((int)lit))
-        std::cout << "char: Non displayable" << std::endl;
-    else
-        std::cout << "char: '" << static_cast<char>(lit) << "'" << std::endl;
+    lit = std::strtod(literal, &endl);
+    if (isLiteral(literal))
+    {
+        type = LITERAL;
+        std::cout << "is literal" << std::endl;
+    }
+    else if (isInt())
+    {
+        type = INT;
+        std::cout << "is int" << std::endl;
+    }
+    else if (isChar())
+    {
+        type = CHAR;    
+        std::cout << "is char" << std::endl;
+    }
+    else if (isFloat())
+    {
+        type = FLOAT;
+        std::cout << "is floating point" << std::endl;
+    }
+    // else if (isDouble())
+    //     type = DOUBLE;
+    
 }
