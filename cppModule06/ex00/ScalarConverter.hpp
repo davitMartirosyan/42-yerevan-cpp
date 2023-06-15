@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 05:15:29 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/15 22:59:14 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/16 02:14:15 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ class ScalarConverter
         ~ScalarConverter();
         static void convert(char * literal);
     private:
-        static bool isLiteral(const char *literal);
+        static bool isLiteral( void );
         static bool isChar( void );
         static bool isFloat( void );
         static bool isDouble( void );

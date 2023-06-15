@@ -1,6 +1,6 @@
 NAME = scalar
 CC = c++
-CC_FLAGS = -std=c++98 #-Wall -Wextra -Werror
+CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
 SRC = ScalarConverter.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 HEADERS = ScalarConverter.hpp

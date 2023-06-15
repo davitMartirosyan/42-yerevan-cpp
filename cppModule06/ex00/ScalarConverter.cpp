@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 05:18:26 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/16 02:05:25 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/16 02:14:27 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ ScalarConverter::~ScalarConverter()
 {
 }
 
-bool ScalarConverter::isLiteral(const char *literal)
+bool ScalarConverter::isLiteral( void )
 {
     if (str.size() >= 3 && str.size() <= 5)
     {
@@ -64,14 +64,14 @@ bool ScalarConverter::isInt( void )
 {
     int s = 0;
     int size = 0;
-    for(int i = 0; i < str.size(); i++)
+    for(int i = 0; i < (int)str.size(); i++)
     {
         if (str[i] == '-' || str[i] == '+')
             s++;
         if (std::isdigit(str[i]))
             size++;
     }
-    if (s <= 1 && str.size() == (size + s))
+    if (s <= 1 && (int)str.size() == (size + s))
         return (true);
     return (false);
 }
@@ -83,7 +83,7 @@ bool ScalarConverter::isFloat( void )
     int size = 0;
     if (str.front() == '0' && str[1] != '.')
         return (false);
-    for(int i = 0; i < str.size(); i++)
+    for(int i = 0; i < (int)str.size(); i++)
     {
         if (str[i] == '.' && size++)
             d <<= 1;
@@ -92,7 +92,7 @@ bool ScalarConverter::isFloat( void )
         if (std::isdigit(str[i]))
             size++;
     }
-    if (d == 2 && s <= 1 && (size + s + 1) == str.size() && 
+    if (d == 2 && s <= 1 && (size + s + 1) == (int)str.size() && 
         (str.back() == 'f' && std::isdigit(str[str.size() - 2])))
         return (true);
     return (false);
@@ -105,7 +105,7 @@ bool ScalarConverter::isDouble( void )
     int size = 0;
     if (str.front() == '0' && str[1] != '.')
         return (false);
-    for(int i = 0; i < str.size(); i++)
+    for(int i = 0; i < (int)str.size(); i++)
     {
         if (str[i] == '.' && size++)
             d <<= 1;
@@ -114,7 +114,7 @@ bool ScalarConverter::isDouble( void )
         if (std::isdigit(str[i]))
             size++;
     }
-    if (d == 2 && s <= 1 && (size + s) == str.size() && std::isdigit(str.back()))
+    if (d == 2 && s <= 1 && (size + s) == (int)str.size() && std::isdigit(str.back()))
         return (true);
     return (false);
 }
@@ -129,7 +129,7 @@ void ScalarConverter::convert(char * literal)
     lit = std::strtod(literal, &endl);
     if (str.empty())
         return ;
-    if (isLiteral(literal))
+    if (isLiteral())
         type = LITERAL;
     else if (isInt())
         type = INT;
