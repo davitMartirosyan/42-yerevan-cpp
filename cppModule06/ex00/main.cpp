@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 05:43:57 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/14 09:57:20 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/15 23:01:05 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 
 int main(int ac, char **av)
 {
-    (void)av;
-    // if (ac != 2)
-    // {
-    //     std::cout << "Incorrect inputs" << std::endl;
-    //     return (1);   
-    // }
-    ScalarConverter::convert(av[1]);
+    try
+    {
+        if (ac != 2)
+        {std::cout << "Incorrect inputs" << std::endl; return (0);}
+        ScalarConverter::convert(av[1]);
+    }
+    catch(const std::exception & e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 }
 
 

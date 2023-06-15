@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 05:15:29 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/15 15:27:06 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/15 22:59:14 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ class ScalarConverter
             CHAR,
             INT,
             FLOAT,
-            DOUBLE
+            DOUBLE,
+            UNDEFINED
         };
     public:
         ScalarConverter( void );
@@ -57,6 +58,11 @@ class ScalarConverter
         static void printInt( void );
         static void printFloat( void );
         static void printDouble( void );
+    private:
+        class ConvertErrException : public std::exception
+        {
+            virtual const char *what() const throw();
+        };
 };
 
 #endif

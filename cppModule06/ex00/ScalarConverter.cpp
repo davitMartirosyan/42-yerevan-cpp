@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 05:18:26 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/15 15:34:00 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/15 22:59:17 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,15 +124,17 @@ void ScalarConverter::convert(char * literal)
     if (str.empty())
         return ;
     if (isLiteral(literal))
-        { type = LITERAL; std::cout << "literal" << std::endl;}
+        type = LITERAL;
     else if (isInt())
-        { type = INT; std::cout << "int" << std::endl;}
+        type = INT;
     else if (isChar())
-        { type = CHAR; std::cout << "char" << std::endl;}
+        type = CHAR;
     else if (isFloat())
-        { type = FLOAT; std::cout << "float" << std::endl;}
+        type = FLOAT;
     else if (isDouble())
-        { type = DOUBLE; std::cout << "double" << std::endl;}
+        type = DOUBLE;
+    else
+        throw ConvertErrException();
     casting();
 }
 
@@ -140,8 +142,8 @@ void ScalarConverter::printCasts( void )
 {
     printChar();
     printInt();
-    // printFloat();
-    // printDouble();
+    printFloat();
+    printDouble();
 }
 
 void ScalarConverter::casting( void )
@@ -165,13 +167,18 @@ void ScalarConverter::casting( void )
             printCasts();
             break;
         }
+        case FLOAT:
+        {
+            printCasts();
+            break;
+        }
     }
 }
 
 void ScalarConverter::printChar( void )
 {
     std::cout << "char: ";
-    if (type == INT && std::isprint((char)lit))
+    if ((type == INT || type == FLOAT || type == DOUBLE) && std::isprint((char)lit))
         std::cout << static_cast<char>(lit) << std::endl;
     else if (type == INT && !std::isprint((char)lit))
         std::cout << "Non displayable" << std::endl;
@@ -184,10 +191,33 @@ void ScalarConverter::printChar( void )
 void ScalarConverter::printInt( void )
 {
     std::cout << "int: ";
-    if (type == INT && ((int)lit > INT_MAX || (int)lit < INT_MIN))
+    if ((type == INT || type == LITERAL || (int)lit > INT_MAX || (int)lit < INT_MIN))
         std::cout << "impossible" << std::endl;
     else if (type == CHAR)
         std::cout << static_cast<int>(str[0]) << std::endl;
-    else if (type == INT)
+    else if (type == INT || type == FLOAT)
         std::cout << static_cast<int>(lit) << std::endl;
+}
+
+void ScalarConverter::printFloat( void )
+{
+    std::cout << "float: ";
+    if (type == CHAR)
+        std::cout << static_cast<float>(str[0]) << "f" << std::endl;
+    else
+        std::cout << static_cast<float>(lit) << "f" << std::endl;
+}
+
+void ScalarConverter::printDouble( void )
+{
+    std::cout << "double: ";
+    if (type == CHAR)
+        std::cout << static_cast<double>(str[0]) << std::endl;
+    else
+        std::cout << static_cast<double>(lit) << std::endl;
+}
+
+const char* ScalarConverter::ConvertErrException::what( void ) const throw()
+{
+    return ("Passed Parameter isn't convertable");   
 }
