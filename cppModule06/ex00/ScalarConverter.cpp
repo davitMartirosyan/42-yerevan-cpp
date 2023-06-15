@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 05:18:26 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/15 22:59:17 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/16 02:05:25 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,25 @@ ScalarConverter::ScalarConverter( void )
 
 ScalarConverter::ScalarConverter(const ScalarConverter& op)
 {
+    str = op.str;
+    lit = op.lit;
+    type = op.type;
 }
 
 ScalarConverter& ScalarConverter::operator=(const ScalarConverter& op)
 {
+    if (this != &op)
+    {
+        str = op.str;
+        lit = op.lit;
+        type = op.type;
+    }
     return (*this);
 }
 
 ScalarConverter::~ScalarConverter()
 {
 }
-
-
 
 bool ScalarConverter::isLiteral(const char *literal)
 {
@@ -90,7 +97,6 @@ bool ScalarConverter::isFloat( void )
         return (true);
     return (false);
 }
-
 
 bool ScalarConverter::isDouble( void )
 {
@@ -152,51 +158,44 @@ void ScalarConverter::casting( void )
     lit = std::strtod(str.c_str(), &endl);
     switch (type)
     {
-        case INT:
-        {
-           printCasts();
-           break;
-        }
-        case LITERAL:
-        {
-            printCasts();
-            break;
-        }
-        case CHAR:
-        {
-            printCasts();
-            break;
-        }
-        case FLOAT:
-        {
-            printCasts();
-            break;
-        }
+        case LITERAL:   {printCasts(); break;}
+        case INT:       {printCasts(); break;}
+        case CHAR:      {printCasts(); break;}
+        case FLOAT:     {printCasts(); break;}
+        case DOUBLE:    {printCasts(); break;}
     }
 }
 
 void ScalarConverter::printChar( void )
 {
     std::cout << "char: ";
-    if ((type == INT || type == FLOAT || type == DOUBLE) && std::isprint((char)lit))
-        std::cout << static_cast<char>(lit) << std::endl;
-    else if (type == INT && !std::isprint((char)lit))
-        std::cout << "Non displayable" << std::endl;
-    else if (type == LITERAL)
-        std::cout << "impossible" << std::endl;
-    else if (type == CHAR)
-        std::cout << str[0] << std::endl;
+    if (type == CHAR)
+        std::cout << (char)str[0];
+    else if (type != CHAR)
+    {
+        if (!std::isprint((char)lit))
+            std::cout << "Non displayable";
+        else if (type == LITERAL)
+            std::cout << "impossible";
+        else
+            std::cout << static_cast<char>(lit);
+    }
+    std::cout << std::endl;
 }
 
 void ScalarConverter::printInt( void )
 {
     std::cout << "int: ";
-    if ((type == INT || type == LITERAL || (int)lit > INT_MAX || (int)lit < INT_MIN))
-        std::cout << "impossible" << std::endl;
-    else if (type == CHAR)
-        std::cout << static_cast<int>(str[0]) << std::endl;
-    else if (type == INT || type == FLOAT)
-        std::cout << static_cast<int>(lit) << std::endl;
+    if (type == CHAR)
+        std::cout << static_cast<int>(str[0]);
+    else if (type != CHAR)
+    {
+        if ((int)lit >= 2147483647 || (int)lit <= -2147483648 || type == LITERAL)
+            std::cout << "impossible";
+        else
+            std::cout << static_cast<int>(lit);
+    }
+    std::cout << std::endl;
 }
 
 void ScalarConverter::printFloat( void )

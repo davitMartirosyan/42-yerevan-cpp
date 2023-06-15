@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 05:43:57 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/15 23:01:05 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/16 02:01:06 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,3 @@ int main(int ac, char **av)
         std::cout << e.what() << std::endl;
     }
 }
-
-
-// ./convert 0
-// char: Non displayable
-// int: 0
-// float: 0.0f
-// double: 0.0
-
-// ./convert nan
-// char: impossible
-// int: impossible
-// float: nanf
-// double: nan
-
-// ./convert 42.0f
-// char: '*'
-// int: 42
-// float: 42.0f
-// double: 42.0
