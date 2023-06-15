@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 05:18:26 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/14 17:02:26 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/15 15:34:00 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,36 +55,60 @@ bool ScalarConverter::isChar( void )
 
 bool ScalarConverter::isInt( void )
 {
+    int s = 0;
     int size = 0;
     for(int i = 0; i < str.size(); i++)
     {
+        if (str[i] == '-' || str[i] == '+')
+            s++;
         if (std::isdigit(str[i]))
             size++;
     }
-    if (str.size() == size)
+    if (s <= 1 && str.size() == (size + s))
         return (true);
     return (false);
 }
 
 bool ScalarConverter::isFloat( void )
 {
-    int d = 0;
+    int d = 1;
+    int s = 0;
     int size = 0;
-    if (str.front() == '0')
+    if (str.front() == '0' && str[1] != '.')
         return (false);
     for(int i = 0; i < str.size(); i++)
     {
-        if (str[i] == '.' || str[i] == '+' || str[i] == '-')
-        {
-            ++d;
-            continue;
-        }
-        else if (std::isdigit(str[i]))
+        if (str[i] == '.' && size++)
+            d <<= 1;
+        if (str[i] == '+' || str[i] == '-')
+            s++;
+        if (std::isdigit(str[i]))
             size++;
     }
-    size+=d+1;
-    std::cout << str.size() << " : " << size << std::endl;
-    if (str.back() == 'f' && str.size() == size)
+    if (d == 2 && s <= 1 && (size + s + 1) == str.size() && 
+        (str.back() == 'f' && std::isdigit(str[str.size() - 2])))
+        return (true);
+    return (false);
+}
+
+
+bool ScalarConverter::isDouble( void )
+{
+    int d = 1;
+    int s = 0;
+    int size = 0;
+    if (str.front() == '0' && str[1] != '.')
+        return (false);
+    for(int i = 0; i < str.size(); i++)
+    {
+        if (str[i] == '.' && size++)
+            d <<= 1;
+        if (str[i] == '+' || str[i] == '-')
+            s++;
+        if (std::isdigit(str[i]))
+            size++;
+    }
+    if (d == 2 && s <= 1 && (size + s) == str.size() && std::isdigit(str.back()))
         return (true);
     return (false);
 }
@@ -100,26 +124,70 @@ void ScalarConverter::convert(char * literal)
     if (str.empty())
         return ;
     if (isLiteral(literal))
-    {
-        type = LITERAL;
-        std::cout << "is literal" << std::endl;
-    }
+        { type = LITERAL; std::cout << "literal" << std::endl;}
     else if (isInt())
-    {
-        type = INT;
-        std::cout << "is int" << std::endl;
-    }
+        { type = INT; std::cout << "int" << std::endl;}
     else if (isChar())
-    {
-        type = CHAR;    
-        std::cout << "is char" << std::endl;
-    }
+        { type = CHAR; std::cout << "char" << std::endl;}
     else if (isFloat())
+        { type = FLOAT; std::cout << "float" << std::endl;}
+    else if (isDouble())
+        { type = DOUBLE; std::cout << "double" << std::endl;}
+    casting();
+}
+
+void ScalarConverter::printCasts( void )
+{
+    printChar();
+    printInt();
+    // printFloat();
+    // printDouble();
+}
+
+void ScalarConverter::casting( void )
+{
+    char *endl;
+    lit = std::strtod(str.c_str(), &endl);
+    switch (type)
     {
-        type = FLOAT;
-        std::cout << "is floating point" << std::endl;
+        case INT:
+        {
+           printCasts();
+           break;
+        }
+        case LITERAL:
+        {
+            printCasts();
+            break;
+        }
+        case CHAR:
+        {
+            printCasts();
+            break;
+        }
     }
-    // else if (isDouble())
-    //     type = DOUBLE;
-    
+}
+
+void ScalarConverter::printChar( void )
+{
+    std::cout << "char: ";
+    if (type == INT && std::isprint((char)lit))
+        std::cout << static_cast<char>(lit) << std::endl;
+    else if (type == INT && !std::isprint((char)lit))
+        std::cout << "Non displayable" << std::endl;
+    else if (type == LITERAL)
+        std::cout << "impossible" << std::endl;
+    else if (type == CHAR)
+        std::cout << str[0] << std::endl;
+}
+
+void ScalarConverter::printInt( void )
+{
+    std::cout << "int: ";
+    if (type == INT && ((int)lit > INT_MAX || (int)lit < INT_MIN))
+        std::cout << "impossible" << std::endl;
+    else if (type == CHAR)
+        std::cout << static_cast<int>(str[0]) << std::endl;
+    else if (type == INT)
+        std::cout << static_cast<int>(lit) << std::endl;
 }
