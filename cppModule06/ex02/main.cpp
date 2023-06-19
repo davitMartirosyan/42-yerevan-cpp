@@ -5,19 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 02:29:57 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/19 20:00:02 by dmartiro         ###   ########.fr       */
+/*   Created: 2023/06/19 20:02:38 by dmartiro          #+#    #+#             */
+/*   Updated: 2023/06/19 20:20:13 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serializer.hpp"
+#include "Base.hpp"
+
+// void func1(std::string & r)
+// {
+//     std::cout << r << std::endl;
+// }
+
+// void func2(std::string * p)
+// {
+//     std::cout << *p << std::endl;
+// }
 
 int main( void )
 {
-    Data ptr = {2, 4, 6, 8};
-    uintptr_t encode = Serializer::serialize(&ptr);
-    std::cout << "Uintptr_t: " << encode << std::endl;
-    Data* decode = Serializer::deserialize(encode);
-    std::cout << "Data*: " << decode << std::endl;
-    std::cout << decode->x << std::endl;
+    std::srand(time(0));
+    int i = 1;
+    int l = 3;
+    
 }

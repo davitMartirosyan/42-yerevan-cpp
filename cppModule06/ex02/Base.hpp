@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 02:29:57 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/19 20:00:02 by dmartiro         ###   ########.fr       */
+/*   Created: 2023/06/19 20:03:58 by dmartiro          #+#    #+#             */
+/*   Updated: 2023/06/19 20:14:28 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serializer.hpp"
+#ifndef BASE_HPP
+#define BASE_HPP
+#include <iostream>
 
-int main( void )
+class Base
 {
-    Data ptr = {2, 4, 6, 8};
-    uintptr_t encode = Serializer::serialize(&ptr);
-    std::cout << "Uintptr_t: " << encode << std::endl;
-    Data* decode = Serializer::deserialize(encode);
-    std::cout << "Data*: " << decode << std::endl;
-    std::cout << decode->x << std::endl;
-}
+    virtual ~Base();
+};
+
+class A : public Base {   };
+
+class B : public Base {   };
+
+class C : public Base {   };
+
+Base * generate( void );
+void identify(Base * p);
+void identify(Base & r);
+
+#endif
