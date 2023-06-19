@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 20:02:38 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/19 20:20:13 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/20 01:27:30 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
 
 int main( void )
 {
-    std::srand(time(0));
-    int i = 1;
-    int l = 3;
-    
+    Base *base = new A();
+    Base &b = *base;
+    identify(b);
+    identify(base);
+
 }

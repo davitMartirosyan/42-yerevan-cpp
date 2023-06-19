@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 20:11:32 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/19 20:19:29 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/20 01:27:59 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ Base * generate( void )
 {
     Base *gen;
     int ran = 3;
-    return (nullptr);
+    return (NULL);
 }
 
 void identify(Base * p)
 {
-    
+    p->test();
 }
 
 void identify(Base & r)
 {
-    
+    r.test();
 }
