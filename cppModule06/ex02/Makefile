@@ -1,6 +1,6 @@
 NAME = typeof
 CC = c++
-CC_FLAGS = -std=c++98 #-Wall -Wextra -Werror
+CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
 SRC = Base.cpp main.cpp
 OBJ = $(SRC:.cpp=.o)
 HEADERS = Base.hpp

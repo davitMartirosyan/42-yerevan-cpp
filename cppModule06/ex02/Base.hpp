@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 20:03:58 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/20 01:20:08 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/20 19:47:57 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,14 @@
 class Base
 {
     public:
-        virtual void test(void ) {std::cout << "Base::test" << std::endl;}
-        virtual ~Base(){}
+        virtual ~Base();
 };
 
-class A : public Base { public: void test( void ) {std::cout << "A::test"; }; int x; };
+class A : public Base { public: void t( void ){std::cout << "test" << std::endl;} };
 
-class B : public Base {   };
+class B : public Base {  };
 
-class C : public Base {   };
-
-class D { public: virtual ~D(){}};
+class C : public Base {  };
 
 Base * generate( void );
 void identify(Base * p);

@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 05:18:26 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/16 02:14:27 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/20 19:56:01 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void ScalarConverter::convert(char * literal)
     if (literal == NULL)
         return ;
     char *endl;
-    std::cout << std::fixed <<  std::setprecision(1);
+    std::cout << std::fixed << std::setprecision(1);
     str = literal;
     lit = std::strtod(literal, &endl);
     if (str.empty())
@@ -173,10 +173,10 @@ void ScalarConverter::printChar( void )
         std::cout << (char)str[0];
     else if (type != CHAR)
     {
-        if (!std::isprint((char)lit))
-            std::cout << "Non displayable";
-        else if (type == LITERAL)
+        if (type == LITERAL)
             std::cout << "impossible";
+        else if (!std::isprint((char)lit))
+            std::cout << "Non displayable";
         else
             std::cout << static_cast<char>(lit);
     }
