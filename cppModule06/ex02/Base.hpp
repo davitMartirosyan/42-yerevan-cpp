@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 20:03:58 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/20 19:47:57 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/20 20:04:52 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Base
         virtual ~Base();
 };
 
-class A : public Base { public: void t( void ){std::cout << "test" << std::endl;} };
+class A : public Base {  };
 
 class B : public Base {  };
 
