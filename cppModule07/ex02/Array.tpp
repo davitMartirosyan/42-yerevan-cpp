@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 20:05:27 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/25 21:27:26 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/26 01:22:17 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,22 @@
 
 template <typename T> Array<T>::Array( void )
 {
-    std::cout << "Array" << std::endl;   
+     array = new T();
+}
+
+template <typename T> Array<T>::Array(unsigned int n)
+{
+    array = new T[n];
+    for(unsigned int i = 0; i < n; i++)
+        array[i] = 0;
+}
+
+template <typename T> Array<T>::~Array()
+{
+    delete [] array;
+}
+
+template <typename T> int Array<T>::size( void )
+{
+    return (this->length);
 }

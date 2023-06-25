@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 19:29:29 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/25 21:27:45 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/26 01:22:50 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int main( void )
 {
-    Array<int> a;
+    Array<int> numbers;
 }
 
