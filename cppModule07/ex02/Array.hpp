@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/19 20:03:58 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/20 20:55:57 by dmartiro         ###   ########.fr       */
+/*   Created: 2023/06/25 19:26:04 by dmartiro          #+#    #+#             */
+/*   Updated: 2023/06/25 21:28:14 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE_HPP
-#define BASE_HPP
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 #include <iostream>
 
-class Base
+template <typename T>
+class Array
 {
     public:
-        virtual ~Base();
+        Array<T>( void );
 };
 
-class A : public Base {  };
-
-class B : public Base {  };
-
-class C : public Base {  };
-
-Base * generate( void );
-void identify(Base * p);
-void identify(Base & r);
-
+#include "Array.tpp"
 #endif

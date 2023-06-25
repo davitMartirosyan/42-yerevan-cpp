@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 12:14:23 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/08 23:35:35 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/22 21:51:46 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int main( void )
 {
     try
     {
-        //Byurokratner
-        // Bureaucrat buro("Escobar", 130);
         Intern aaa;
         Bureaucrat buro("donald", 20);
         Form* fo;
