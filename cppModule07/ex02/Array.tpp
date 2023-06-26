@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 20:05:27 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/26 01:22:17 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/26 15:28:08 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,38 @@
 
 template <typename T> Array<T>::Array( void )
 {
-     array = new T();
+    capacity = 1;
+    len = 0;
+    this->array = new T[capacity];
+    this->array[0] = 0;
 }
 
 template <typename T> Array<T>::Array(unsigned int n)
 {
-    array = new T[n];
-    for(unsigned int i = 0; i < n; i++)
-        array[i] = 0;
+    this->array = new T[n];
+    for(int i = 0; i < n; i++)
+        this->array[i] = 0;
+    capacity = n;
 }
 
-template <typename T> Array<T>::~Array()
+template <typename T> Array<T>::Array(Array<T>& op)
 {
-    delete [] array;
+    this->capacity = op.capacity;
+    this->len = op.len;
+    this->array = new T[this->capacity];
+    for(int i = 0; i < this->capacity; i++)
+        this->array[i] = op[i];
 }
 
-template <typename T> int Array<T>::size( void )
+template <typename T> Array<T>& Array<T>::operator=(Array<T>& op)
 {
-    return (this->length);
+    if (this != op)
+    {
+        this->capacity = op.capacity;
+        this->len = op.len;
+        this->array = new T[this->capacity];
+        for(int i = 0; i < this->capacity; i++)
+            this->array[i] = op[i];
+    }
+    return (*this);
 }
