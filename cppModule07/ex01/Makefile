@@ -1,7 +1,7 @@
 NAME = iter
 CC = c++
-CC_FLAGS = -std=c++98 #-Wall -Wextra -Werror
-SRC = main.cpp
+CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
+SRC = main.cpp ex01.cpp
 OBJ = $(SRC:.cpp=.o)
 HEADERS = iter.hpp
 

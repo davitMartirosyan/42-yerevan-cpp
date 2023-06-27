@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 19:59:46 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/22 21:54:57 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/27 06:32:24 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,5 @@
 #define ITER_HPP
 #include <iostream>
 
-void increment(int *item)
-{
-    *item += 10;
-}
-
-template<typename addr, typename len, typename funcarg> void iter(addr address, len size, void (*func)(funcarg v2))
-{
-    for(int i = 0; i < size; i++)
-        (*func)((*address+i));   
-}
 
 #endif
