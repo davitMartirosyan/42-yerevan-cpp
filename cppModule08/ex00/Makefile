@@ -1,18 +1,18 @@
-NAME = array
+NAME = easyfind
 CC = c++
 CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
 SRC = main.cpp
+TTP = easyfind.tpp
 OBJ = $(SRC:.cpp=.o)
-HEADERS = Array.hpp
+HEADERS = easyfind.hpp
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
 	$(CC) $(CC_FLAGS) $(OBJ) -o $(NAME)
 
-%.o : %.cpp Array.tpp $(HEADERS)
+%.o : %.cpp  $(TPP) $(HEADERS)
 	$(CC) $(CC_FLAGS) -c $< -o $@
-
 
 fclean : clean
 	rm -rf $(NAME)
@@ -22,4 +22,4 @@ clean :
 
 re : fclean all
 
-.PHONNY: all re fclean clean
+.PHONNY: re all clean fclean
