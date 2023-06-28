@@ -6,36 +6,47 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 20:05:27 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/27 04:26:44 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/28 15:01:35 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
-
 template <typename T> Array<T>::Array( void )
 {
-    len = 0;
     this->array = new T[1];
+    len = 0;
 }
 
 template <typename T> Array<T>::Array(unsigned int n)
 {
+    this->len = n;
     this->array = new T[n];
-    len = n;
 }
 
-template <typename T> Array<T>::Array(Array<T>& op)
+template<typename T>
+Array<T>::Array(const Array& op)
 {
-    this->len = op.len;
-    this->array = new T[this->len];
-    for(unsigned int i = 0; i < this->len; i++)
+    this->len = op.size();
+    this->array = new T[op.size()];
+    for(unsigned int i = 0; i < this->size(); i++)
         this->array[i] = op[i];
 }
 
-template <typename T> Array<T>& Array<T>::operator=(Array<T>& op)
+template<typename T>
+template <typename U>
+Array<T>::Array(const Array<U>& op)
+{
+    this->len = op.size();
+    this->array = new T[op.size()];
+    for(unsigned int i = 0; i < this->size(); i++)
+        this->array[i] = op[i];
+}
+
+template <typename T>
+Array<T>& Array<T>::operator=(const Array& op)
 {
     if (this != &op)
     {
+        delete [] array;
         this->len = op.len;
         this->array = new T[this->len];
         for(unsigned int i = 0; i < this->len; i++)
@@ -47,14 +58,21 @@ template <typename T> Array<T>& Array<T>::operator=(Array<T>& op)
 template <typename T> Array<T>::~Array()
 {
     delete [] array;
-}
+}   
 
-template <typename T> unsigned int Array<T>::size( void )
+template <typename T> unsigned int Array<T>::size( void ) const 
 {
     return (this->len);
 }
 
-template <typename T> T& Array<T>::operator[](unsigned int index) const
+template <typename T> T& Array<T>::operator[](unsigned int index)
+{
+    if (index >= len)
+        throw std::out_of_range("Out of range");
+    return (*(array + index));
+}
+
+template <typename T> T Array<T>::operator[](unsigned int index) const
 {
     if (index >= len)
         throw std::out_of_range("Out of range");
