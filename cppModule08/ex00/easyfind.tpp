@@ -6,12 +6,8 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 18:47:39 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/30 02:58:36 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/06/30 12:55:05 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-template <typename T>
-T easyfind(const T &container, int integer)
-{
-    
-}
+

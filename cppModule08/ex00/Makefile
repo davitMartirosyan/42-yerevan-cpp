@@ -1,8 +1,7 @@
 NAME = easyfind
 CC = c++
-CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
+CC_FLAGS = -std=c++11 #-Wall -Wextra -Werror
 SRC = main.cpp
-TTP = easyfind.tpp
 OBJ = $(SRC:.cpp=.o)
 HEADERS = easyfind.hpp
 
@@ -11,7 +10,7 @@ all : $(NAME)
 $(NAME) : $(OBJ)
 	$(CC) $(CC_FLAGS) $(OBJ) -o $(NAME)
 
-%.o : %.cpp  $(TPP) $(HEADERS)
+%.o : %.cpp $(HEADERS)
 	$(CC) $(CC_FLAGS) -c $< -o $@
 
 fclean : clean
