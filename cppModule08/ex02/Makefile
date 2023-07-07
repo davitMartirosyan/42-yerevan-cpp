@@ -1,16 +1,17 @@
-NAME = ex01
+NAME = ex02
 CC = c++
 CC_FLAGS = -std=c++98 -Wall -Wextra -Werror
-SRC = main.cpp Span.cpp
+SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
-HEADERS = Span.hpp
+HEADERS = MutantStack.hpp
+TPP = MutantStack.tpp
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
 	$(CC) $(CC_FLAGS) $(OBJ) -o $(NAME)
 
-%.o : %.cpp
+%.o : %.cpp $(TPP) $(HEADERS)
 	$(CC) $(CC_FLAGS) -c $< -o $@
 
 fclean : clean
@@ -21,4 +22,4 @@ clean :
 
 re : fclean all
 
-.PHONNY: re all fclean clean
+.PHONNY: re all clean fclean

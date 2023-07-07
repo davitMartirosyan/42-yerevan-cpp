@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 18:29:27 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/03 21:04:06 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/07 13:49:38 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ class Span
         int shortestSpan( void );
         int longestSpan( void );
         void addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+    private:
+        void qsort(std::vector<int>&cp, int min, int max);
+        void swap(int &a, int &b);
+        int part(std::vector<int>&cp, int min, int max);
 };
 
 #endif
