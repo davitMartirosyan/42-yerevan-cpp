@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 20:02:38 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/20 19:42:33 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/09 19:24:24 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int main( void )
 {
+    A* a = new A();
     Base *base = generate();
     identify(base);
     identify(*base);

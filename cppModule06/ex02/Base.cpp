@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 20:11:32 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/20 21:29:23 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/09 19:24:21 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,5 @@ void identify(Base & r)
     catch(const std::bad_cast & e)
     {
         (void)e;
-    }   
+    }
 }
