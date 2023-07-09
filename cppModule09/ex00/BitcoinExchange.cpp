@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 15:00:27 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/09 22:29:28 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/09 22:32:40 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,7 @@ void BTC::regexp(const std::string& operand)
     else
     {
         int i = 0;
-        std::string s = ltrim(operand);
-        std::cout << s << std::endl;
+        std::string s = trim(operand);
         while (std::isdigit(s.at(i)) || s.at(i) == '-')
         {
             if (s.at(i) == ',')
@@ -129,5 +128,5 @@ std::string BTC::ltrim(const std::string &s)
 
 std::string BTC::trim(const std::string &s)
 {
-    return (ltrim(s));
+    return (ltrim(rtrim(s)));
 }
