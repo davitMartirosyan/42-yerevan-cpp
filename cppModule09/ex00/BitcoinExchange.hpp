@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 14:58:42 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/09 20:21:32 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/09 22:08:52 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,17 @@
 #include <map>
 #include <cstdlib>
 #include <fstream>
+#include <exception>
+#include <unistd.h>
 
 class BTC
 {
     private:
-        std::fstream IO;
+        static std::string msg;
+        static std::string exp;
+    private:
+        std::fstream IOD;
+        std::fstream IOI;
     private:
         std::string file;
         std::string db;
@@ -29,8 +35,6 @@ class BTC
     private:
         std::map<std::string, double> Dbase;
         std::map<std::string, double> Input;
-    private:
-        static std::string msg;
     public:
         BTC( void );
         BTC(const std::string& file);
@@ -42,6 +46,23 @@ class BTC
         static std::string getMsg( void );
     public:
         void openFile( void );
+        void DBread( void );
+    public:
+        class DBException : public std::exception
+        {
+            public:
+                virtual const char *what( void ) const throw();
+        };
+        class FileException : public std::exception
+        {
+            public:
+                virtual const char *what( void ) const throw();
+        };
+    public:
+        void regexp(const std::string& operand);
+        std::string rtrim(const std::string &s);
+        std::string ltrim(const std::string &s);
+        std::string trim(const std::string &s);
 };
 
 #endif
