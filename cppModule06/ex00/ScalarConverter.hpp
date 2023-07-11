@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 05:15:29 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/16 02:14:15 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/11 02:49:29 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,12 @@ class ScalarConverter
         };
     public:
         ScalarConverter( void );
+        ScalarConverter(const std::string& literal);
         ScalarConverter(const ScalarConverter& op);
         ScalarConverter& operator=(const ScalarConverter& op);
         ~ScalarConverter();
         static void convert(char * literal);
-    private:
+    public:
         static bool isLiteral( void );
         static bool isChar( void );
         static bool isFloat( void );

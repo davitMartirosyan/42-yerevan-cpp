@@ -1,7 +1,7 @@
 NAME = btc
 CC = c++
 CC_FLAGS = -std=c++98 #-Wall -Wextra -Werror
-SRC = main.cpp BitcoinExchange.cpp
+SRC = main.cpp BitcoinExchange.cpp ../../cppModule06/ex00/ScalarConverter.cpp
 OBJ = $(SRC:.cpp=.o)
 HEADERS = BitcoinExchange.hpp
 

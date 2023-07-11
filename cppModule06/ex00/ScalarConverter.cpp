@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 05:18:26 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/06/22 21:58:11 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/11 03:00:02 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ int ScalarConverter::type = 0;
 
 ScalarConverter::ScalarConverter( void )
 {
+}
+
+ScalarConverter::ScalarConverter(const std::string& literal)
+{
+    if (!literal.empty())
+        str = literal;
 }
 
 
@@ -127,6 +133,7 @@ void ScalarConverter::convert(char * literal)
     std::cout << std::fixed << std::setprecision(1);
     str = literal;
     lit = std::strtod(literal, &endl);
+    std::cout << literal << std::endl;
     if (str.empty())
         return ;
     if (isLiteral())

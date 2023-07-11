@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 14:57:45 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/09 21:30:04 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/11 06:50:56 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int main(int ac, char **av)
     try
     {
         BTC btc(av[1]);
+        std::cout << "___________" << std::endl;
         btc.openFile();
     }
     catch (const std::exception& e)
