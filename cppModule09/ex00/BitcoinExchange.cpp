@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 15:00:27 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/11 07:12:32 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/12 16:00:12 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,12 @@ BTC::BTC( void )
 
 BTC::BTC(const std::string& f)
 {
-    int len;
     file = f;
     db = "test.csv";
     inputFileExtension = file.substr(file.find_last_of(".") + 1);
     IOD.open(db);
     IOD.seekg(0, std::ios::end);
-    len = IOD.tellg();
-    if (len > 0)
+    if (IOD.tellg() > 0)
     {
         this->charStream = ',';
         IOD.close();
@@ -80,10 +78,18 @@ void BTC::openFile( void )
     {
         this->charStream = '|';
         IOI.open(file);
-        if (IOI.is_open())
-            this->UIread();
+        IOI.seekg(0, std::ios::end);
+        if (IOI.tellg() > 0)
+        {
+            IOI.close();
+            IOI.open(file);
+            if (IOI.is_open())
+                this->UIread();
+            else
+                throw std::runtime_error("Could not open file");
+        }
         else
-            throw std::runtime_error("Could not open file");
+            throw std::runtime_error("User input was corrupted");
     }
     IOI.close();
 }
@@ -92,29 +98,29 @@ void BTC::DBread( void )
 {
     char *end;
     std::string line;
-    std::map<std::string, std::string> pair;
+    std::multimap<std::string, std::string> pair;
     while(std::getline(IOD, line))
     {
         pair = regexp(line, ',');
         if (!pair.empty())
-            DB[pair.begin()->first] = pair.begin()->second;
+            DB.insert(std::make_pair(pair.begin()->first, pair.begin()->second));
     }
-    for(std::map<std::string, std::string>::iterator it = DB.begin(); it != DB.end(); it++)
-        std::cout << it->first << " => " << it->second << std::endl;
+    for(std::multimap<std::string, std::string>::iterator it = DB.begin(); it != DB.end(); it++)
+        std::cout << it->first << " -> " << it->second << std::endl;
 }
 
 void BTC::UIread( void )
 {
     char *end;
     std::string line;
-    std::map<std::string, std::string> pair;
+    std::multimap<std::string, std::string> pair;
     while(std::getline(IOI, line))
     {
         pair = regexp(line, '|');
         if (!pair.empty())
-            UI[pair.begin()->first] = pair.begin()->second;
+            UI.insert(std::make_pair(pair.begin()->first, pair.begin()->second));
     }
-    for(std::map<std::string, std::string>::iterator it = UI.begin(); it != UI.end(); it++)
+    for(std::multimap<std::string, std::string>::iterator it = UI.begin(); it != UI.end(); it++)
         std::cout << it->first << " => " << it->second << std::endl;
 }
 
@@ -128,11 +134,11 @@ const char * BTC::FileException::what( void ) const throw()
     return (msg.c_str());
 }
 
-const std::map<std::string, std::string> BTC::regexp(const std::string& operand, char o)
+const std::multimap<std::string, std::string> BTC::regexp(const std::string& operand, char o)
 {
     int i = 0;
     std::string s = trim(operand);
-    std::map<std::string, std::string> pair;
+    std::multimap<std::string, std::string> pair;
     for (std::string::iterator it = s.begin(); it != s.end(); it++)
         if (std::isdigit(*it) || *it == this->charStream || *it == '-' || *it == '+')
             i++;
@@ -158,10 +164,9 @@ const std::map<std::string, std::string> BTC::regexp(const std::string& operand,
             && date.substr(0, date.find_first_of("-")) <= "2050"
             && date.substr(date.find_first_of("-")+1, date.find_first_not_of("-")+2) <= "12"
             && date.substr(date.find_last_of("-")+1) <= "31")
-                    // std::cout << date << std::endl;
-                    pair[date] = val;
+                    pair.insert(std::make_pair(date, val));
         else
-            pair["Error: bad input"] = date;
+            pair.insert(std::make_pair("Error: bad input", date));
         return (pair);
     }
     return (pair);

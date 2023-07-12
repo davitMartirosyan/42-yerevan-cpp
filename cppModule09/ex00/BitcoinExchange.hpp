@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 14:58:42 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/11 07:12:39 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:48:05 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ class BTC
     private:
         std::map<std::string, double> Dbase;
         std::map<std::string, double> Input;
-        std::map<std::string, std::string>DB;
-        std::map<std::string, std::string>UI;
+        std::multimap<std::string, std::string>DB;
+        std::multimap<std::string, std::string>UI;
     public:
         BTC( void );
         BTC(const std::string& file);
@@ -65,7 +65,7 @@ class BTC
                 virtual const char *what( void ) const throw();
         };
     public:
-        const std::map<std::string, std::string> regexp(const std::string& operand, char o);
+        const std::multimap<std::string, std::string> regexp(const std::string& operand, char o);
         std::string rtrim(const std::string &s);
         std::string ltrim(const std::string &s);
         std::string trim(const std::string &s);
