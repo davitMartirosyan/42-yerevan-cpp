@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 14:58:42 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/12 15:48:05 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/13 22:43:36 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <fstream>
 #include <exception>
 #include <unistd.h>
-#include "../../cppModule06/ex00/ScalarConverter.hpp"
+typedef std::multimap<std::string, std::string> multimap;
 
 class BTC
 {
@@ -35,8 +35,6 @@ class BTC
         std::string inputDbaseExtension;
         char charStream;
     private:
-        std::map<std::string, double> Dbase;
-        std::map<std::string, double> Input;
         std::multimap<std::string, std::string>DB;
         std::multimap<std::string, std::string>UI;
     public:
@@ -52,18 +50,10 @@ class BTC
         void openFile( void );
         void DBread( void );
         void UIread( void );
-        // void DBUIread(std::fstream& IO);
-    public:
-        class DBException : public std::exception
-        {
-            public:
-                virtual const char *what( void ) const throw();
-        };
-        class FileException : public std::exception
-        {
-            public:
-                virtual const char *what( void ) const throw();
-        };
+        multimap::iterator find(const std::string& key);
+        int diff(const std::string& key, const std::string& dbkey);
+        void displayLine(multimap::iterator pair);
+        void display( void );
     public:
         const std::multimap<std::string, std::string> regexp(const std::string& operand, char o);
         std::string rtrim(const std::string &s);
