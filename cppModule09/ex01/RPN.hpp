@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 19:21:09 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/13 21:37:05 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/13 23:21:12 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ class RPN
 {
     private:
         std::stack<std::string>rpn;
-        const std::string arithmetic_string;
+        const std::string m;
+        static const std::string& symbols;
     public:
         RPN( void );
         RPN(char **v);
@@ -28,7 +29,7 @@ class RPN
         ~RPN();
     public:
         const std::string mathString(char** vector);
-        int filter( void );
+        void filter( void );
 };
 
 #endif

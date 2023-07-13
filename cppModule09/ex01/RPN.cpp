@@ -6,25 +6,26 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 21:10:06 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/13 21:47:29 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/13 23:28:45 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
+const std::string& RPN::symbols = "0123456789 -+/*";
+
 RPN::RPN( void )
-    : arithmetic_string("")
+    : m("")
 {
 }
 
 RPN::RPN(char **v)
-    : arithmetic_string(mathString(v))
-{
-    std::cout << ":" <<  arithmetic_string << ":" << std::endl;   
+    : m(mathString(v))
+{ 
 }
 
 RPN::RPN(const RPN& op)
-    : arithmetic_string(op.arithmetic_string)
+    : m(op.m)
 {
     *this = op;
 }
@@ -52,7 +53,21 @@ const std::string RPN::mathString(char** vector)
     return (mathStr);
 }
 
-int RPN::filter( void )
+void RPN::filter( void )
 {
-    return (1);
+    // int operators = 0;
+    int numbers = 0;
+    if (m.find_first_not_of(symbols) != std::string::npos)
+        throw std::runtime_error("Incorrect Symbols");
+    else
+    {
+        for(size_t i = 0; i < m.size(); i++)
+        {
+            if (std::isdigit(m.at(i)))
+            {
+                numbers++;
+                // find numbers and operators
+            }
+        }
+    }
 }
