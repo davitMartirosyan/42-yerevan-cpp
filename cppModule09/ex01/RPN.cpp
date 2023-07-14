@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 21:10:06 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/14 16:14:30 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/14 16:16:28 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void RPN::add( void )
     l = stack.top();
     stack.pop();
     r = stack.top();
-    stack.push(l + r);
+    stack.push(r + l);
 }
 
 void RPN::sub( void )
@@ -121,7 +121,7 @@ void RPN::sub( void )
     l = stack.top();
     stack.pop();
     r = stack.top();
-    stack.push(l - r);
+    stack.push(r - l);
 }
 
 void RPN::mult( void )
@@ -129,7 +129,7 @@ void RPN::mult( void )
     l = stack.top();
     stack.pop();
     r = stack.top();
-    stack.push(l * r);    
+    stack.push(r * l);    
 }
 
 void RPN::div( void )
@@ -137,5 +137,5 @@ void RPN::div( void )
     l = stack.top();
     stack.pop();
     r = stack.top();
-    stack.push(l / r);
+    stack.push(r / l);
 }
