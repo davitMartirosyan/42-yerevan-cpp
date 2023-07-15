@@ -6,12 +6,12 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 21:10:06 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/14 16:16:28 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/15 15:48:14 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
-
+int RPN::items = 0;
 const std::string& RPN::symbols = "0123456789 -+/*";
 
 RPN::RPN( void )
@@ -53,44 +53,39 @@ const std::string RPN::mathString(char** vector)
     return (mathStr);
 }
 
-void RPN::filter( void )
+void RPN::extract( void )
 {
     if (m.find_first_not_of(symbols) != std::string::npos)
-        throw std::runtime_error("Incorrect Symbols");
-    else
+        throw std::runtime_error("Error");
+    else if (filter())
     {
-        std::string n;
         for(size_t i = 0; i < m.size(); i++)
         {
-            if (std::isdigit(m.at(i)))
-                n += m.at(i);
-            else if (!n.empty())
+            if (std::isdigit(m[i]))
             {
-                stack.push(std::atoi(n.c_str()));
-                n.clear();
+                items++;
+                stack.push(std::atoi(&m[i]));
             }
-            if (m[i] == '-' || m[i] == '+' || m[i] == '*' || m[i] == '/')
-                    operation(m[i]);
+            else if (m[i] == '+' || m[i] == '-' || m[i] == '*' || m[i] == '/')
+                operation(m[i]);      
         }
     }
-    std::cout << stack.top() << std::endl;
 }
 
-bool RPN::hasExessNumbers( void )
+bool RPN::filter( void )
 {
     int operators = 0;
     int numbers = 0;
-    std::string n;
     for(size_t i = 0; i < m.size(); i++)
     {
-        if (std::isdigit(m.at(i)))
-            n += m.at(i);
-        else if (!n.empty())
+        if (std::isdigit(m[i]))
         {
-            numbers++;
-            n.clear();
+            if (std::isdigit(m[i+1]))
+                throw std::runtime_error("Use numbers < than 10");
+            else
+                numbers++;
         }
-        if (m.at(i) == '+' || m.at(i) == '-' || m.at(i) == '*' || m.at(i) == '/')
+        if (m[i] == '-' || m[i] == '+' || m[i] == '*' || m[i] == '/')
             operators++;
     }
     if ((numbers - operators) == 1)
@@ -101,41 +96,49 @@ bool RPN::hasExessNumbers( void )
 
 void RPN::operation(char op)
 {
+    int i = -1;
     void (RPN::*func[4])( void ) = { &RPN::add, &RPN::sub, &RPN::mult, &RPN::div }; 
     int operators[4] = {'+', '-', '*', '/'};
-    int i = -1;
+    if (items <= 1)
+        throw std::runtime_error("Syntax Error");
+    take();
     while(++i != 4 && operators[i] != op){}
     (this->*func[i])();
+    items++;
+}
+
+void RPN::take( void )
+{
+    l = stack.top();
+    stack.pop();
+    items--;
+    r = stack.top();
+    items--;
 }
 
 void RPN::add( void )
 {
-    l = stack.top();
-    stack.pop();
-    r = stack.top();
-    stack.push(r + l);
+    stack.push(l + r);
 }
 
 void RPN::sub( void )
 {
-    l = stack.top();
-    stack.pop();
-    r = stack.top();
     stack.push(r - l);
 }
 
 void RPN::mult( void )
 {
-    l = stack.top();
-    stack.pop();
-    r = stack.top();
-    stack.push(r * l);    
+    stack.push(l * r);
 }
 
 void RPN::div( void )
 {
-    l = stack.top();
-    stack.pop();
-    r = stack.top();
     stack.push(r / l);
+}
+
+int RPN::inFixResult( void )
+{
+    if (!stack.empty())
+        return (stack.top());
+    throw std::runtime_error("Error");
 }
