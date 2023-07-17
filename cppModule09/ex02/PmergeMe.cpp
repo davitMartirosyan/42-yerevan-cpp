@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:20:31 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/16 16:10:31 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/17 21:18:38 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,11 @@ void PmergeMe::lookList( void )
 void PmergeMe::showUnsortedArray( void )
 {
     std::cout << pmerge << std::endl;
+}
+
+void PmergeMe::swap(int &a, int &b)
+{
+    int tmp = a;
+    a = b;
+    b = tmp;
 }

@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:09:08 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/16 16:12:45 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/17 20:30:48 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ int main(int ac, char **av)
         // pmerge.listSort();
         // pmerge.dequeSort();
         
+        // pmerge.showUnsortedArray();
+        // std::cout << "--------------------" << std::endl;
         
-        pmerge.showUnsortedArray();
-        std::cout << "--------------------" << std::endl;
+        // std::cout << "Vector: ";
         
-        std::cout << "Vector: ";
+        // std::cout << std::endl;
+        
+        // std::cout << "List: ";
+        // pmerge.lookList();
+        // std::vector<int>vector = {5, 8, 1, 7, 4, 3, 54, 8, 1};
         pmerge.lookVector();
-        
-        std::cout << std::endl;
-        
-        std::cout << "List: ";
-        pmerge.lookList();
     }
     catch(const std::exception & e)
     {

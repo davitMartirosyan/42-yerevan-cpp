@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:09:33 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/16 16:08:14 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/17 20:29:25 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ class PmergeMe
     private:
         int errn;
         std::string pmerge;
-        std::vector<int> vector;
         std::deque<int> deque;
+        std::vector<int> vector;
         std::list<int> list;
     public:
         PmergeMe( void );
@@ -39,6 +39,24 @@ class PmergeMe
         void showUnsortedArray( void );
         void lookVector( void );
         void lookList( void );
+    public:
+        template <typename T>
+        void insertionSortOf(T& massive)
+        {
+            for(size_t i = 0; i < massive.size(); i++)
+            {
+                int pos = i - 1;
+                int key = massive[i];
+                while (pos >= 0 && massive[pos] > key)
+                {
+                    massive[pos + 1] = massive[pos];
+                    pos--;
+                }
+                massive[pos + 1] = key;
+            }
+        }
+    private:
+        void swap(int &a, int &b);
 };
 
 #endif
