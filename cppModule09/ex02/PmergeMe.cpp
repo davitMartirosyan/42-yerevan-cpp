@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:20:31 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/17 21:18:38 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/18 21:50:23 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void PmergeMe::extract( void )
             n += pmerge[i];
         else
         {
-            // std::cout << ":" << n << ":" << std::endl;
             this->vector.push_back(std::atoi(n.c_str()));
             this->list.push_back(std::atoi(n.c_str()));
             n.clear();
@@ -81,20 +80,22 @@ void PmergeMe::extract( void )
         throw std::runtime_error("Error: Incorrect Inputs");
 }
 
-void PmergeMe::lookVector( void )
-{
-    std::vector<int>::iterator vec;
-    for(vec = vector.begin(); vec != vector.end(); vec++)
-        std::cout << *vec << " ";
-    std::cout << std::endl;
-}
-void PmergeMe::lookList( void )
-{
-    std::list<int>::iterator lst;
-    for(lst = list.begin(); lst != list.end(); lst++)
-        std::cout << *lst << " ";
-    std::cout << std::endl;
-}
+// void PmergeMe::lookVector( void )
+// {
+//     insertionSortOf(vector);
+//     std::vector<int>::iterator vec;
+//     for(vec = vector.begin(); vec != vector.end(); vec++)
+//         std::cout << *vec << " ";
+//     std::cout << std::endl;
+// }
+
+// void PmergeMe::lookList( void )
+// {
+//     std::list<int>::iterator lst;
+//     for(lst = list.begin(); lst != list.end(); lst++)
+//         std::cout << *lst << " ";
+//     std::cout << std::endl;
+// }
 
 void PmergeMe::showUnsortedArray( void )
 {
@@ -106,4 +107,31 @@ void PmergeMe::swap(int &a, int &b)
     int tmp = a;
     a = b;
     b = tmp;
+}
+
+void PmergeMe::mergeVector(std::vector<int> v, int b, int e)
+{
+    if (b >= e)
+        return ;
+    int m = b + (e - b) / 2;
+    mergeVector(v, b, m);
+    mergeVector(v, m + 1, e);
+    mergeVector(v, b, m, e);
+}
+
+void PmergeMe::mergeVector(std::vector<int> v, int b, int m, int e)
+{
+    std::vector<int> l;
+    std::vector<int> r;
+    std::cout << b << ":" << m << ":" << e << std::endl;
+}
+
+std::vector<int> PmergeMe::extractVector( void )
+{
+    return (this->vector);   
+}
+
+std::list<int> PmergeMe::extractList( void )
+{
+    return (this->list);    
 }

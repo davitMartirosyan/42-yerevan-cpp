@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:09:08 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/17 20:30:48 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/18 21:38:20 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ int main(int ac, char **av)
     try
     {
         (void)ac;
+        std::vector<int> vector;
         PmergeMe pmerge(av);
         pmerge.extract();
-        // pmerge.vectorSort();
+        vector = pmerge.extractVector();
+        pmerge.mergeVector(vector, 0, vector.size() - 1);
+        
         // pmerge.listSort();
         // pmerge.dequeSort();
         
@@ -32,8 +35,7 @@ int main(int ac, char **av)
         
         // std::cout << "List: ";
         // pmerge.lookList();
-        // std::vector<int>vector = {5, 8, 1, 7, 4, 3, 54, 8, 1};
-        pmerge.lookVector();
+        // pmerge.lookVector();
     }
     catch(const std::exception & e)
     {
