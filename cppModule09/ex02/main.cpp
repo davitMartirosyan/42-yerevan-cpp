@@ -18,11 +18,11 @@ int main(int ac, char **av)
     {
         (void)av;
         (void)ac;
-        // std::cout << std::fixed << std::setprecision(5);
+        std::cout << std::fixed << std::setprecision(5);
         PmergeMe p(av);
         p.extract();
         std::vector<int> vec = p.extractAsVector();
-        // std::deque<int> deq = p.extractAsDeque();
+        std::deque<int> deq = p.extractAsDeque();
         
         // p.sortVec(vec, 0, vec.size());
         // for(size_t i = 0; i < vec.size(); i++)
@@ -30,7 +30,11 @@ int main(int ac, char **av)
         // std::cout << std::endl;
 
 
+        p.mergeSortDeque(deq, 0, deq.size() - 1);
 
+        for(size_t i = 0; i < deq.size(); i++)
+            std::cout << deq[i] << " ";
+        std::cout << std::endl;
         // Before: 3 5 9 7 4
         // After: 3 4 5 7 9
         // Time to process a range of 5 elements with std::[..] : 0.00031 us

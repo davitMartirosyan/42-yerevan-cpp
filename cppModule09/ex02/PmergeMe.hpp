@@ -49,16 +49,17 @@ class PmergeMe
         std::string trim(const std::string &s);
     private:
         //vector Sorting
-        void mergeSortVector(std::vector<int>&massive, int b, int e);
         void mergeSortVector(std::vector<int>&massive, int b, int m, int e);
         void insertionSortVector(std::vector<int>&massive, int b, int e);
         //deque Sorting
-        void mergeSortDeque(std::deque<int>&massive, int b, int e);
         void mergeSortDeque(std::deque<int>&massive, int b, int m, int e);
         void insertionSortDeque(std::deque<int>&massive, int b, int e);
     public:
         void sortVec(std::vector<int>&massive, int b, int e);
         void sortDeq(std::deque<int>&massive, int b, int e);
+        void mergeSortVector(std::vector<int>&massive, int b, int e);
+        void mergeSortDeque(std::deque<int>&massive, int b, int e);
+
 };
 
 #endif

@@ -88,17 +88,12 @@ void PmergeMe::extract( void )
     this->massiveDynamics = new int[strnums.size()];
     allocated = true;
     for(size_t i = 0; i < strnums.size(); i++)
-    {
         this->massiveDynamics[i] = std::atoi(strnums[i].c_str());
-        std::cout << massiveDynamics[i] << " ";
-    }
-    std::cout << std::endl;
 }
 
 std::vector<int> PmergeMe::extractAsVector( void )
 {
     std::vector<int> tmp;
-    std::cout << pmerge << std::endl;
     for(size_t i = 0; i < numberCount; i++)
         tmp.push_back(massiveDynamics[i]);
     return (tmp);   
@@ -144,7 +139,7 @@ std::string PmergeMe::trim(const std::string &s)
 
 void PmergeMe::insertionSortVector(std::vector<int>&massive, int b, int e)
 {
-    for(int i = b; i < e; i++)
+    for(int i = b + 1; i <= e; i++)
     {
         int pos = i - 1;
         int key = massive[i];
@@ -159,7 +154,7 @@ void PmergeMe::insertionSortVector(std::vector<int>&massive, int b, int e)
 
 void PmergeMe::insertionSortDeque(std::deque<int>&massive, int b, int e)
 {
-    for(int i = b + 1; i < e; i++)
+    for(int i = b + 1; i <= e; i++)
     {
         int pos = i - 1;
         int key = massive[i];
@@ -174,60 +169,59 @@ void PmergeMe::insertionSortDeque(std::deque<int>&massive, int b, int e)
 
 void PmergeMe::mergeSortVector(std::vector<int>&massive, int b, int e)
 {
-    if (b < e)
+    if (e - b <= threshold)
+        insertionSortVector(massive, b, e);
+    else
     {
         int m = b + (e - b) / 2;
-        if ((size_t)(e - b) > threshold)
-        {
-            mergeSortVector(massive, b, m);
-            mergeSortVector(massive, m+1, e);
-            mergeSortVector(massive, b, m, e);
-        }
-        else
-            insertionSortVector(massive, b, e);
+        mergeSortVector(massive, b, m);
+        mergeSortVector(massive, m+1, e);
+        mergeSortVector(massive, b, m, e);
     }
 }
 
 void PmergeMe::mergeSortVector(std::vector<int>&massive, int b, int m, int e)
 {
-    std::vector<int>leftPart(m-b+1);
-    std::vector<int>rightPart(e-m);
+    int l = m - b + 1;
+    int r = e - m;
+    std::vector<int>leftPart(l);
+    std::vector<int>rightPart(r);
 
-    for(size_t i = 0; i < leftPart.size(); i++)
+    for(size_t i = 0; i < l; ++i)
         leftPart[i] = massive[b+i];
-    for(size_t i = 0; i < rightPart.size(); i++)
-        rightPart[i] = massive[m+i+1];
+    for(size_t j = 0; j < r; ++j)
+        rightPart[j] = massive[m+1+j];
 
-    size_t lf = 0;
-    size_t rf = 0;
-    size_t merged = b;
-    while (lf < leftPart.size() && rf < rightPart.size())
+    int lf = 0;
+    int rf = 0;
+    int merged = b;
+    while (lf < l && rf < r)
     {
         if (leftPart[lf] <= rightPart[rf])
         {
             massive[merged] = leftPart[lf];
-            ++lf;
+            lf++;
         }
         else
         {
             massive[merged] = rightPart[rf];
-            ++rf;
+            rf++;
         }
-        ++merged;
+        merged++;
     }
 
-    while (lf < leftPart.size())
+    while (lf < l)
     {
         massive[merged] = leftPart[lf];
-        ++lf;
-        ++merged;
+        lf++;
+        merged++;
     }
 
-    while (rf < rightPart.size())
+    while (rf < r)
     {
         massive[merged] = rightPart[rf];
-        ++rf;
-        ++merged;
+        rf++;
+        merged++;
     }
 }
 
