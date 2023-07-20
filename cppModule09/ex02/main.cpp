@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:09:08 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/19 21:38:29 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/20 20:10:50 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,46 +16,25 @@ int main(int ac, char **av)
 {
     try
     {
+        (void)av;
         (void)ac;
-        std::cout << std::fixed << std::setprecision(5);
-        PmergeMe pmerge(av);
-        pmerge.extract();
-        std::vector<int> vector = pmerge.extractVector();
-        std::deque<int> deque = pmerge.extractDeque();
-
-        std::cout << "Before: " << pmerge.before() << std::endl;
-        std::cout << "After: ";
-        clock_t start = clock();
-        pmerge.sort(vector, 0, vector.size() - 1);
-        clock_t end = clock();
+        // std::cout << std::fixed << std::setprecision(5);
+        PmergeMe p(av);
+        p.extract();
+        std::vector<int> vec = p.extractAsVector();
+        // std::deque<int> deq = p.extractAsDeque();
         
-        
-
-        std::vector<int>::iterator vec = vector.begin();
-        for(; vec != vector.end(); vec++)
-            std::cout << *vec << " ";
-        std::cout<< std::endl;
-
-        
-        std::cout << "Time to process a range of " 
-            << vector.size() 
-            << " elements with std::[vector] : "
-            << static_cast<double>(end - start) / CLOCKS_PER_SEC * 10000000.0
-        << std::endl;
+        // p.sortVec(vec, 0, vec.size());
+        // for(size_t i = 0; i < vec.size(); i++)
+        //     std::cout << vec[i] << " ";
+        // std::cout << std::endl;
 
 
 
-        // start = clock();
-        start = printDuration();
-        pmerge.sort(deque, 0, vector.size() - 1);
-        // end = clock();
-        end = printDuration();
-
-        std::cout << "Time to process a range of " 
-            << deque.size() 
-            << " elements with std::[deque] : "
-            << static_cast<double>(end - start) / CLOCKS_PER_SEC * 10000000.0
-        << std::endl;
+        // Before: 3 5 9 7 4
+        // After: 3 4 5 7 9
+        // Time to process a range of 5 elements with std::[..] : 0.00031 us
+        // Time to process a range of 5 elements with std::[..] : 0.00014 us
     }
     catch(const std::exception & e)
     {

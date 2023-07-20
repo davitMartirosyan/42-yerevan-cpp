@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:20:31 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/19 21:34:41 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/20 20:11:50 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t PmergeMe::errn = 0;
 size_t PmergeMe::numberCount = 0;
-size_t PmergeMe::threshold = 10;
+size_t PmergeMe::threshold = 15;
 bool PmergeMe::allocated = false;
 
 PmergeMe::PmergeMe( void )
@@ -44,7 +44,7 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& op)
 PmergeMe::~PmergeMe()
 {
     if (allocated)
-        delete [] massive;
+        delete [] massiveDynamics;
 }
 
 void PmergeMe::bind(char **av)
@@ -79,23 +79,28 @@ void PmergeMe::extract( void )
         else if (!n.empty())
         {
             numberCount++;
-            strnums.push_back(n);   
+            strnums.push_back(n);
             n.clear();
         }
     }
     if (this->errn != 0)
         throw std::runtime_error("Error: Incorrect Inputs");
-    this->massive = new int[strnums.size()];
+    this->massiveDynamics = new int[strnums.size()];
     allocated = true;
     for(size_t i = 0; i < strnums.size(); i++)
-        this->massive[i] = std::atoi(strnums[i].c_str());
+    {
+        this->massiveDynamics[i] = std::atoi(strnums[i].c_str());
+        std::cout << massiveDynamics[i] << " ";
+    }
+    std::cout << std::endl;
 }
 
-std::vector<int> PmergeMe::extractVector( void )
+std::vector<int> PmergeMe::extractAsVector( void )
 {
     std::vector<int> tmp;
+    std::cout << pmerge << std::endl;
     for(size_t i = 0; i < numberCount; i++)
-        tmp.push_back(massive[i]);
+        tmp.push_back(massiveDynamics[i]);
     return (tmp);   
 }
 
@@ -103,15 +108,15 @@ std::list<int> PmergeMe::extractList( void )
 {
     std::list<int> tmp;
     for(size_t i = 0; i < numberCount; i++)
-        tmp.push_back(massive[i]);
+        tmp.push_back(massiveDynamics[i]);
     return (tmp);
 }
 
-std::deque<int> PmergeMe::extractDeque( void )
+std::deque<int> PmergeMe::extractAsDeque( void )
 {
     std::deque<int> tmp;
     for(size_t i = 0; i < numberCount; i++)
-        tmp.push_back(massive[i]);
+        tmp.push_back(massiveDynamics[i]);
     return (tmp);
 }
 
@@ -137,33 +142,166 @@ std::string PmergeMe::trim(const std::string &s)
     return (ltrim(rtrim(s)));
 }
 
-void PmergeMe::printVector(std::vector<int> &v, int flag)
+void PmergeMe::insertionSortVector(std::vector<int>&massive, int b, int e)
 {
-	std::vector<int>::iterator i = v.begin();
-
-	if (flag == 0)
-		std::cout<<"Before: ";
-	else
-		std::cout<<"After : ";
-	for (; i != v.end() && i != v.begin() + 8; i++)
-	{
-		std::cout << *i << " ";
-	}
-	if (v.size() > 8)
-	{
-		std::cout<<" [...]";
-	}
-	std::cout<<std::endl;
+    for(int i = b; i < e; i++)
+    {
+        int pos = i - 1;
+        int key = massive[i];
+        while (pos >= b && massive[pos] > key)
+        {
+            massive[pos + 1] = massive[pos];
+            pos--;
+        }
+        massive[pos + 1] = key;
+    }
 }
 
-void PmergeMe::printDuration(std)
+void PmergeMe::insertionSortDeque(std::deque<int>&massive, int b, int e)
 {
-	printVector(this->_v, 1);
-	// printList(this->_l, 1);
-	double sec1 = ((_endTimeV.tv_sec * 1000 + _endTimeV.tv_usec * 0.001) - (_startTimeV.tv_sec * 1000 + _startTimeV.tv_usec * 0.001));
-	double sec2 =((_endTimeL.tv_sec * 1000 + _endTimeL.tv_usec * 0.001) - (_startTimeL.tv_sec * 1000 + _startTimeL.tv_usec * 0.001));
-	std::cout<<"Time to process a range of   "<< _v.size() << " elements with std::vector[..] : "<<std::flush;
-	std::cout<<  sec1 <<" us" << std::endl;
-	std::cout<<"Time to process a range of   "<< _l.size() << " elements with std::list[..] : "<<std::flush;
-	std::cout<<  sec2 <<" us" << std::endl;
+    for(int i = b + 1; i < e; i++)
+    {
+        int pos = i - 1;
+        int key = massive[i];
+        while (pos >= b && massive[pos] > key)
+        {
+            massive[pos + 1] = massive[pos];
+            pos--;
+        }
+        massive[pos + 1] = key;
+    }
+}
+
+void PmergeMe::mergeSortVector(std::vector<int>&massive, int b, int e)
+{
+    if (b < e)
+    {
+        int m = b + (e - b) / 2;
+        if ((size_t)(e - b) > threshold)
+        {
+            mergeSortVector(massive, b, m);
+            mergeSortVector(massive, m+1, e);
+            mergeSortVector(massive, b, m, e);
+        }
+        else
+            insertionSortVector(massive, b, e);
+    }
+}
+
+void PmergeMe::mergeSortVector(std::vector<int>&massive, int b, int m, int e)
+{
+    std::vector<int>leftPart(m-b+1);
+    std::vector<int>rightPart(e-m);
+
+    for(size_t i = 0; i < leftPart.size(); i++)
+        leftPart[i] = massive[b+i];
+    for(size_t i = 0; i < rightPart.size(); i++)
+        rightPart[i] = massive[m+i+1];
+
+    size_t lf = 0;
+    size_t rf = 0;
+    size_t merged = b;
+    while (lf < leftPart.size() && rf < rightPart.size())
+    {
+        if (leftPart[lf] <= rightPart[rf])
+        {
+            massive[merged] = leftPart[lf];
+            ++lf;
+        }
+        else
+        {
+            massive[merged] = rightPart[rf];
+            ++rf;
+        }
+        ++merged;
+    }
+
+    while (lf < leftPart.size())
+    {
+        massive[merged] = leftPart[lf];
+        ++lf;
+        ++merged;
+    }
+
+    while (rf < rightPart.size())
+    {
+        massive[merged] = rightPart[rf];
+        ++rf;
+        ++merged;
+    }
+}
+
+void PmergeMe::mergeSortDeque(std::deque<int>&massive, int b, int e)
+{
+    if (b < e)
+    {
+        int m = (b + e) / 2;
+        if ((size_t)(e - b) > threshold)
+        {
+            mergeSortDeque(massive, b, m);
+            mergeSortDeque(massive, m+1, e);
+            mergeSortDeque(massive, b, m, e);
+        }
+        else
+            insertionSortDeque(massive, b, e);
+    }
+}
+
+void PmergeMe::mergeSortDeque(std::deque<int>&massive, int b, int m, int e)
+{
+    std::deque<int>leftPart(m-b+1);
+    std::deque<int>rightPart(e-m);
+
+    for(size_t i = 0; i < leftPart.size(); i++)
+        leftPart[i] = massive[b+i];
+    for(size_t i = 0; i < rightPart.size(); i++)
+        rightPart[i] = massive[m+i+1];
+
+    size_t lf = 0;
+    size_t rf = 0;
+    size_t merged = b;
+    while (lf < leftPart.size() && rf < rightPart.size())
+    {
+        if (leftPart[lf] <= rightPart[rf])
+        {
+            massive[merged] = leftPart[lf];
+            ++lf;
+        }
+        else
+        {
+            massive[merged] = rightPart[rf];
+            ++rf;
+        }
+        ++merged;
+    }
+
+    while (lf < leftPart.size())
+    {
+        massive[merged] = leftPart[lf];
+        ++lf;
+        ++merged;
+    }
+
+    while (rf < rightPart.size())
+    {
+        massive[merged] = rightPart[rf];
+        ++rf;
+        ++merged;
+    }
+}
+
+void PmergeMe::sortVec(std::vector<int>&massive, int b, int e)
+{
+    if (massive.size() > threshold)
+        mergeSortVector(massive, b, e);
+    else
+        insertionSortVector(massive, b, e);
+}
+
+void PmergeMe::sortDeq(std::deque<int>&massive, int b, int e)
+{
+    if (massive.size() > threshold)
+        mergeSortDeque(massive, b, e);
+    else
+        insertionSortDeque(massive, b, e);
 }

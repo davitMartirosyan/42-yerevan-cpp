@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "*.bem": "cuda-cpp",
         "*.tpp": "cpp",
         "__bit_reference": "cpp",
         "__config": "cpp",
@@ -74,6 +75,14 @@
         "filesystem": "cpp",
         "__memory": "cpp",
         "climits": "cpp",
-        "cfloat": "cpp"
+        "cfloat": "cpp",
+        "*.tcc": "cpp",
+        "clocale": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "memory_resource": "cpp",
+        "numeric": "cpp",
+        "random": "cpp",
+        "numbers": "cpp"
     }
 }
