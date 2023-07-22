@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:09:08 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/20 20:10:50 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/22 18:20:49 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,32 @@ int main(int ac, char **av)
 {
     try
     {
-        (void)av;
-        (void)ac;
+        struct timeval t_start1, t_start2, t_end1, t_end2;
         std::cout << std::fixed << std::setprecision(5);
         PmergeMe p(av);
         p.extract();
         std::vector<int> vec = p.extractAsVector();
         std::deque<int> deq = p.extractAsDeque();
         
-        // p.sortVec(vec, 0, vec.size());
-        // for(size_t i = 0; i < vec.size(); i++)
-        //     std::cout << vec[i] << " ";
-        // std::cout << std::endl;
-
-
+        gettimeofday(&t_start1, 0);
+        p.mergeSortVector(vec, 0, vec.size() - 1);
+        gettimeofday(&t_end1, 0);
+        gettimeofday(&t_start2, 0);
         p.mergeSortDeque(deq, 0, deq.size() - 1);
+        gettimeofday(&t_end2, 0);
 
-        for(size_t i = 0; i < deq.size(); i++)
-            std::cout << deq[i] << " ";
-        std::cout << std::endl;
-        // Before: 3 5 9 7 4
-        // After: 3 4 5 7 9
-        // Time to process a range of 5 elements with std::[..] : 0.00031 us
-        // Time to process a range of 5 elements with std::[..] : 0.00014 us
+        std::cout << "Before: ";
+        p.getUnsorted();
+        std::cout << "After: ";
+        p.getSorted(vec);
+        std::cout << "Time to process a range of "
+        << vec.size() << " elements with std::[vector] " 
+        << p.getTime(t_start1, t_end1) << " us" << std::endl;
+        
+        std::cout << "Time to process a range of "
+        << vec.size() << " elements with std::[deque] " 
+        << p.getTime(t_start2, t_end2) << " us" << std::endl;
+        (void)ac;
     }
     catch(const std::exception & e)
     {

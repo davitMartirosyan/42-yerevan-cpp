@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:20:31 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/20 20:11:50 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/22 18:14:11 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t PmergeMe::errn = 0;
 size_t PmergeMe::numberCount = 0;
-size_t PmergeMe::threshold = 15;
+int PmergeMe::threshold = 15;
 bool PmergeMe::allocated = false;
 
 PmergeMe::PmergeMe( void )
@@ -187,9 +187,9 @@ void PmergeMe::mergeSortVector(std::vector<int>&massive, int b, int m, int e)
     std::vector<int>leftPart(l);
     std::vector<int>rightPart(r);
 
-    for(size_t i = 0; i < l; ++i)
+    for(int i = 0; i < l; ++i)
         leftPart[i] = massive[b+i];
-    for(size_t j = 0; j < r; ++j)
+    for(int j = 0; j < r; ++j)
         rightPart[j] = massive[m+1+j];
 
     int lf = 0;
@@ -230,7 +230,7 @@ void PmergeMe::mergeSortDeque(std::deque<int>&massive, int b, int e)
     if (b < e)
     {
         int m = (b + e) / 2;
-        if ((size_t)(e - b) > threshold)
+        if ((e - b) > threshold)
         {
             mergeSortDeque(massive, b, m);
             mergeSortDeque(massive, m+1, e);
@@ -284,18 +284,24 @@ void PmergeMe::mergeSortDeque(std::deque<int>&massive, int b, int m, int e)
     }
 }
 
-void PmergeMe::sortVec(std::vector<int>&massive, int b, int e)
+void PmergeMe::getUnsorted( void )
 {
-    if (massive.size() > threshold)
-        mergeSortVector(massive, b, e);
-    else
-        insertionSortVector(massive, b, e);
+    for(size_t i = 0; i < numberCount; i++)
+        std::cout << massiveDynamics[i] << " ";
+    std::cout << std::endl;
 }
 
-void PmergeMe::sortDeq(std::deque<int>&massive, int b, int e)
+void PmergeMe::getSorted(std::vector<int>&sorted)
 {
-    if (massive.size() > threshold)
-        mergeSortDeque(massive, b, e);
-    else
-        insertionSortDeque(massive, b, e);
+    for(size_t i = 0; i < sorted.size(); i++)
+        std::cout << sorted[i] << " ";
+    std::cout << std::endl;
+}
+
+double PmergeMe::getTime(struct timeval& start, struct timeval& end)
+{
+    long sec = end.tv_sec - start.tv_sec;
+    long mil = end.tv_usec - start.tv_usec;
+    long dur = sec * 1000000 + mil;
+    return (dur / 1000.0000);
 }

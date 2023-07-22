@@ -6,7 +6,7 @@
 /*   By: dmartiro <dmartiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 15:09:33 by dmartiro          #+#    #+#             */
-/*   Updated: 2023/07/20 19:41:21 by dmartiro         ###   ########.fr       */
+/*   Updated: 2023/07/22 18:08:30 by dmartiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 #include <vector>
 #include <deque>
 #include <stdexcept>
-#include <ctime>
 #include <iomanip>
 #include <cstdlib>
+#include <sys/time.h>
 
 class PmergeMe
 {
@@ -28,7 +28,7 @@ class PmergeMe
         static bool allocated;
         static size_t errn;
         static size_t numberCount;
-        static size_t threshold;
+        static int threshold;
         std::string pmerge;
         PmergeMe( void );
     public:
@@ -42,6 +42,8 @@ class PmergeMe
         std::vector<int> extractAsVector( void );
         std::deque<int> extractAsDeque( void );
         std::list<int> extractList( void );
+        void getUnsorted( void );
+        void getSorted(std::vector<int>&sorted);
     private:
         void bind(char **av);
         std::string ltrim(const std::string &s);
@@ -55,11 +57,10 @@ class PmergeMe
         void mergeSortDeque(std::deque<int>&massive, int b, int m, int e);
         void insertionSortDeque(std::deque<int>&massive, int b, int e);
     public:
-        void sortVec(std::vector<int>&massive, int b, int e);
-        void sortDeq(std::deque<int>&massive, int b, int e);
         void mergeSortVector(std::vector<int>&massive, int b, int e);
         void mergeSortDeque(std::deque<int>&massive, int b, int e);
-
+    public:
+        double getTime(struct timeval& start, struct timeval& end);
 };
 
 #endif
